@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import rogden33.jeopardytrivia.database.UsersDB;
+import rogden33.jeopardytrivia.model.User;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -54,6 +59,18 @@ public class LoginActivity extends ActionBarActivity {
      * @param view the current view object
      */
     public void loginSubmit(View view) {
+        UsersDB database = new UsersDB(this);
+        EditText usernameEntry = (EditText) findViewById(R.id.login_editText_username);
+        EditText pinEntry = (EditText) findViewById(R.id.login_editText_pin);
+        String username = usernameEntry.getText().toString();
+        String pin = pinEntry.getText().toString();
+        User user = database.login(username, pin);
+        if (user == null) {
+            Toast.makeText(this, "Not authenticated", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Welcome, " + username, Toast.LENGTH_LONG).show();
+        }
+        database.closeDB();
     }
 
     /**
@@ -63,5 +80,11 @@ public class LoginActivity extends ActionBarActivity {
      * @param view the current view object
      */
     public void registerNewUser(View view) {
+        UsersDB database = new UsersDB(this);
+        EditText usernameEntry = (EditText) findViewById(R.id.login_editText_username);
+        EditText pinEntry = (EditText) findViewById(R.id.login_editText_pin);
+        String username = usernameEntry.getText().toString();
+        String pin = pinEntry.getText().toString();
+        database.newUser(username, pin);
     }
 }

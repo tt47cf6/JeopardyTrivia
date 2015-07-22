@@ -56,22 +56,32 @@
             android:hint="@string/login_pin_hint"
             android:inputType="numberPassword"/>
 
-        <!-- Login submit button. Attempts to log in user -->
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_submit_button_text"
-            android:onClick="loginSubmit"
-            android:layout_gravity="center"/>
+            android:orientation="horizontal">
+
+            <!-- Login submit button. Attempts to log in user -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_submit_button_text"
+                android:onClick="loginSubmit"
+                android:layout_gravity="left"/>
+
+            <!-- Register new user button -->
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/login_register_button_text"
+                android:onClick="registerNewUser"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
-    <!-- Register new user button -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/login_register_button_text"
-        android:onClick="registerNewUser"/>
+
 
 
 </LinearLayout>
