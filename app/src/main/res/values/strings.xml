@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Jeopardy Trivia</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- LOGIN ACTIVITY TEXT ITEMS-->
+    <string name="login_welcome_text">Let\'s Play Jeopardy Trivia!</string>
+    <string name="login_login_prompt">Already registered? Login below:</string>
+    <string name="login_username_hint">Enter your username...</string>
+    <string name="login_pin_hint">Enter your pin...</string>
+    <string name="login_submit_button_text">Submit</string>
+    <string name="login_register_button_text">Register</string>
+
 </resources>
