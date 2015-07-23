@@ -1,5 +1,6 @@
 package rogden33.jeopardytrivia;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -68,7 +69,11 @@ public class LoginActivity extends ActionBarActivity {
         if (user == null) {
             Toast.makeText(this, "Not authenticated", Toast.LENGTH_LONG).show();
         } else {
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            intent.putExtra(MainMenuActivity.USER_EXTRA_ID, user.serialize());
+            startActivity(intent);
             Toast.makeText(this, "Welcome, " + username, Toast.LENGTH_LONG).show();
+            finish();
         }
         database.closeDB();
     }

@@ -9,5 +9,8 @@
     <string name="login_pin_hint">Enter your pin...</string>
     <string name="login_submit_button_text">Login</string>
     <string name="login_register_button_text">Submit as New User</string>
+    <string name="title_activity_main_menu">MainMenuActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
