@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 import rogden33.jeopardytrivia.model.User;
 
@@ -43,6 +45,25 @@ public class UsersDB {
             return false;
         }
 
+    }
+
+    public List<String> getAllUsernames() {
+        List<String> result = new ArrayList<String>();
+        Cursor c = mySQLDB.query(
+                "Users",
+                new String[] {"username"},
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        c.moveToFirst();
+        for (int i = 0; i < c.getCount(); i++) {
+            result.add(c.getString(0));
+            c.moveToNext();
+        }
+        return result;
     }
 
     public User login(String username, String pin) {

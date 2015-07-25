@@ -1,6 +1,8 @@
 package rogden33.jeopardytrivia;
 
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +24,9 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+        trans.add(R.id.login_frameLayout_fragmentContainer, new LoginUserListFragment());
+        trans.commit();
     }
 
     /**
@@ -53,43 +58,11 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     /**
-     * Attempts to login a user. The username/password is checked against the SQLite DB
-     * and if successful, the user is taken to the next Activity. The login activity is not
-     * added to the back stack.
-     *
-     * @param view the current view object
-     */
-    public void loginSubmit(View view) {
-        UsersDB database = new UsersDB(this);
-        EditText usernameEntry = (EditText) findViewById(R.id.login_editText_username);
-        EditText pinEntry = (EditText) findViewById(R.id.login_editText_pin);
-        String username = usernameEntry.getText().toString();
-        String pin = pinEntry.getText().toString();
-        User user = database.login(username, pin);
-        if (user == null) {
-            Toast.makeText(this, "Not authenticated", Toast.LENGTH_LONG).show();
-        } else {
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            intent.putExtra(MainMenuActivity.USER_EXTRA_ID, user.serialize());
-            startActivity(intent);
-            Toast.makeText(this, "Welcome, " + username, Toast.LENGTH_LONG).show();
-            finish();
-        }
-        database.closeDB();
-    }
-
-    /**
      * Takes the user to a new activity to create a new user account. After that is done,
      * this activity will be restored so that the user can login with thier new credentials.
      *
-     * @param view the current view object
      */
-    public void registerNewUser(View view) {
-        UsersDB database = new UsersDB(this);
-        EditText usernameEntry = (EditText) findViewById(R.id.login_editText_username);
-        EditText pinEntry = (EditText) findViewById(R.id.login_editText_pin);
-        String username = usernameEntry.getText().toString();
-        String pin = pinEntry.getText().toString();
-        database.newUser(username, pin);
+    public void registerNewUser(View v) {
+
     }
 }

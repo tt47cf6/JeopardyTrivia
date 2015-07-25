@@ -23,63 +23,12 @@
 
     </LinearLayout>
 
-    <!-- Login area-->
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="vertical">
-
-        <!-- prompt the user to login if they are already registered -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_login_prompt"/>
-
-        <!-- Give some room between prompt and edit texts -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="15dp"/>
-
-        <!-- username entry -->
-        <EditText
-            android:id="@+id/login_editText_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_username_hint" />
-
-        <!-- pin entry. numbers only with hidden text entry -->
-        <EditText
-            android:id="@+id/login_editText_pin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_pin_hint"
-            android:inputType="numberPassword"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- Login submit button. Attempts to log in user -->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_submit_button_text"
-                android:onClick="loginSubmit"
-                android:layout_gravity="left"/>
-
-            <!-- Register new user button -->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="@string/login_register_button_text"
-                android:onClick="registerNewUser"/>
-        </LinearLayout>
-
-
-    </LinearLayout>
+        android:id="@+id/login_frameLayout_fragmentContainer">
+    </FrameLayout>
 
 
 
