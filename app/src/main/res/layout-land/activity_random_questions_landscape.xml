@@ -6,6 +6,12 @@
     android:padding="10dp"
     tools:context="rogden33.jeopardytrivia.RandomQuestionsActivity">
 
+    <Button
+        android:id="@+id/randomQuestions_Button_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="nextClue"
+        android:text="Next" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,19 +77,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/randomQuestions_Button_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="nextClue"
-        android:text="Next" />
-
 
 </LinearLayout>

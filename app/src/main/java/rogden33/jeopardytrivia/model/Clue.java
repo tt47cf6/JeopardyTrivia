@@ -1,5 +1,12 @@
 package rogden33.jeopardytrivia.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by Robert on 7/27/2015.
  */
@@ -7,41 +14,42 @@ public class Clue {
 
     public static final int NUMBER_OF_ANSWERS = 4;
 
-    public final String myClue;
+    private final QuestionBank myBank;
 
-    public final String myResponse;
+    private final String myClue;
 
-    public final String myCategory;
+    private final String myResponse;
 
-    public final String myID;
+    private final String myCategory;
 
-    public final int myDifficulty;
+    private final String myID;
 
-    public final String[] mySelectableAnswers;
+    private final int myDifficulty;
 
-    public Clue(String clue, String response, String category, String id, int difficulty) {
+    private final String[] mySelectableAnswers;
+
+    private int myCorrectResponseIndex;
+
+    public Clue(QuestionBank qb, String clue, String response, String category, String id, int difficulty) {
+        myBank = qb;
         myClue = clue;
         myResponse = response;
         myCategory = category;
         myID = id;
         myDifficulty = difficulty;
         mySelectableAnswers = new String[NUMBER_OF_ANSWERS];
-        mySelectableAnswers[0] = myResponse;
-        for (int i = 1; i < mySelectableAnswers.length; i++) {
-
-        }
     }
 
     public String getClue() {
-        return myClue.replace("\\'", "'");
+        return myClue;
     }
 
     public String getResponse() {
-        return myResponse.replace("\\'", "'");
+        return myResponse;
     }
 
     public String getCategory() {
-        return myCategory.replace("\\'", "'");
+        return myCategory;
     }
 
     public String getID() {
@@ -49,10 +57,26 @@ public class Clue {
     }
 
     public String[] getSelectableAnswers() {
-        return mySelectableAnswers;
+        Set<String> possibleSet = new HashSet<String>();
+        possibleSet.add(myResponse);
+        while (possibleSet.size() < NUMBER_OF_ANSWERS) {
+            possibleSet.add(myBank.getRandomAnswer());
+        }
+        List<String> shuffleMe = new ArrayList<String>(possibleSet);
+        Collections.shuffle(shuffleMe);
+        for (int i = 0; i < NUMBER_OF_ANSWERS; i++) {
+            if (shuffleMe.get(i).equals(myResponse)) {
+                myCorrectResponseIndex = i;
+            }
+            mySelectableAnswers[i] = shuffleMe.get(i);
+        }
+        return mySelectableAnswers.clone();
     }
 
     public int getDifficulty() {
         return myDifficulty;
     }
+
+    public int getCorrectResponseIndex() { return myCorrectResponseIndex; }
+
 }

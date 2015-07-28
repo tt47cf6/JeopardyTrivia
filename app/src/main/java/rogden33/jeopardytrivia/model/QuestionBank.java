@@ -18,8 +18,12 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+import java.util.Random;
 
 import rogden33.jeopardytrivia.RandomQuestionsActivity;
 
@@ -34,10 +38,18 @@ public class QuestionBank {
 
     private final Queue<Clue> myRandomClues;
 
+    private final List<String> myRandomAnswers;
+
     private final RandomQuestionsActivity myActivity;
+
+    private final Random myRandom;
+
+    private final QuestionBank mySelf = this;
 
     public QuestionBank(final RandomQuestionsActivity act) {
         myRandomClues = new LinkedList<Clue>();
+        myRandomAnswers = new ArrayList<String>();
+        myRandom = new Random();
         myActivity = act;
         getNextBatch();
     }
@@ -52,6 +64,10 @@ public class QuestionBank {
         }
         return myRandomClues.poll();
 
+    }
+
+    public String getRandomAnswer() {
+        return myRandomAnswers.get(myRandom.nextInt(myRandomAnswers.size()));
     }
 
     private void getNextBatch() {
@@ -114,12 +130,7 @@ public class QuestionBank {
 
         // Reads an InputStream and converts it to a String.
         public String readIt(InputStream stream) throws
-                IOException, UnsupportedEncodingException {
-//            Reader reader = null;
-//            reader = new InputStreamReader(stream, "UTF-8");
-//            char[] buffer = new char[stream.available()];
-//            reader.read(buffer);
-//            return new String(buffer);
+                IOException {
             BufferedReader br = new BufferedReader(new InputStreamReader(stream));
             String line;
             StringBuilder builder = new StringBuilder();
@@ -138,14 +149,14 @@ public class QuestionBank {
                     try {
                         JSONObject jsonObject = (JSONObject)
                                 jsonarray.get(i);
-                        Log.d(TAG, jsonObject.toString());
                         String id = "" + ((Integer) jsonObject.get("id"));
                         String clue = (String) jsonObject.get("question");
                         String response = (String) jsonObject.get("answer");
                         String category = (String) ((JSONObject) jsonObject.get("category")).get("title");
                         int difficulty = jsonObject.getInt("value");
-                        Clue newClue = new Clue(clue, response, category, id, difficulty);
+                        Clue newClue = new Clue(mySelf, clue.replace("\\'", "'"), response.replace("\\'", "'"), category.replace("\\'", "'"), id, difficulty);
                         myRandomClues.add(newClue);
+                        myRandomAnswers.add(response.replace("\\'", "'"));
                     } catch (JSONException e) {
                         // skip, was just a bad question
                     }
@@ -154,7 +165,6 @@ public class QuestionBank {
             } catch (JSONException e) {
                 Toast.makeText(myActivity, "Could not get more questions", Toast.LENGTH_SHORT).show();
             }
-
         }
     }
 }
