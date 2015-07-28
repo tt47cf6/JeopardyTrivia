@@ -1,36 +1,24 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
 
-    <!-- Static welcome text. I would eventually like to replace
-         this with a picture or other fun graphic.                -->
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        android:text="@string/login_welcome_text"
+        android:textSize="50dp"
+        android:typeface="sans" />
 
-        <TextView
-            android:text="@string/login_welcome_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:typeface="sans"
-            android:textSize="50sp"/>
-
-    </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/login_frameLayout_fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/login_frameLayout_fragmentContainer">
-    </FrameLayout>
-
-
+        android:layout_height="0dp"
+        android:layout_weight="3"/>
 
 
 </LinearLayout>

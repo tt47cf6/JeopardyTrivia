@@ -97,6 +97,11 @@ public class UsersDB {
         return null;
     }
 
+    public void deleteUser(String username) {
+        mySQLDB.delete("Users", "username=?",new String[]
+                {username});
+    }
+
     public void closeDB() {
         mySQLDB.close();
     }

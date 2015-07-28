@@ -12,6 +12,7 @@
     <string name="title_activity_main_menu">MainMenuActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_random_questions">RandomQuestions</string>
 
 
 </resources>
