@@ -2,6 +2,7 @@ package rogden33.jeopardytrivia;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +15,7 @@ import rogden33.jeopardytrivia.model.Clue;
 import rogden33.jeopardytrivia.model.QuestionBank;
 
 
-public class RandomQuestions extends ActionBarActivity {
+public class RandomQuestionsActivity extends ActionBarActivity {
 
     public static final String LOADING_TEXT = "Loading...";
     private QuestionBank myQuestionBank;
@@ -58,9 +59,10 @@ public class RandomQuestions extends ActionBarActivity {
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);
         TextView resp = (TextView) findViewById(R.id.randomQuestions_TextView_responseDisplay);
         TextView cate = (TextView) findViewById(R.id.randomQuestions_TextView_categoryDisplay);
-        clue.setText(next.getClue());
-        resp.setText(next.getResponse());
-        cate.setText(next.getCategory());
+        clue.setText(Html.fromHtml(next.getClue()));
+        resp.setText(Html.fromHtml(next.getResponse()));
+        cate.setText(Html.fromHtml(next.getCategory()));
+
     }
 
 

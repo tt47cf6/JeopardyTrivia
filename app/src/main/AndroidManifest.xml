@@ -24,7 +24,7 @@
             android:label="@string/title_activity_main_menu" >
         </activity>
         <activity
-            android:name=".RandomQuestions"
+            android:name=".RandomQuestionsActivity"
             android:label="@string/title_activity_random_questions" >
         </activity>
     </application>

@@ -15,15 +15,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import rogden33.jeopardytrivia.RandomQuestions;
+import rogden33.jeopardytrivia.RandomQuestionsActivity;
 
 /**
  * Created by Robert on 7/27/2015.
@@ -36,9 +34,9 @@ public class QuestionBank {
 
     private final Queue<Clue> myRandomClues;
 
-    private final RandomQuestions myActivity;
+    private final RandomQuestionsActivity myActivity;
 
-    public QuestionBank(final RandomQuestions act) {
+    public QuestionBank(final RandomQuestionsActivity act) {
         myRandomClues = new LinkedList<Clue>();
         myActivity = act;
         getNextBatch();

@@ -5,6 +5,8 @@ package rogden33.jeopardytrivia.model;
  */
 public class Clue {
 
+    public static final int NUMBER_OF_ANSWERS = 4;
+
     public final String myClue;
 
     public final String myResponse;
@@ -15,28 +17,39 @@ public class Clue {
 
     public final int myDifficulty;
 
+    public final String[] mySelectableAnswers;
+
     public Clue(String clue, String response, String category, String id, int difficulty) {
         myClue = clue;
         myResponse = response;
         myCategory = category;
         myID = id;
         myDifficulty = difficulty;
+        mySelectableAnswers = new String[NUMBER_OF_ANSWERS];
+        mySelectableAnswers[0] = myResponse;
+        for (int i = 1; i < mySelectableAnswers.length; i++) {
+
+        }
     }
 
     public String getClue() {
-        return myClue;
+        return myClue.replace("\\'", "'");
     }
 
     public String getResponse() {
-        return myResponse;
+        return myResponse.replace("\\'", "'");
     }
 
     public String getCategory() {
-        return myCategory;
+        return myCategory.replace("\\'", "'");
     }
 
     public String getID() {
         return myID;
+    }
+
+    public String[] getSelectableAnswers() {
+        return mySelectableAnswers;
     }
 
     public int getDifficulty() {
