@@ -47,8 +47,6 @@ public class RandomQuestionsActivity extends ActionBarActivity {
 
     private int myScore;
 
-    private int myOriginalScore;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +88,12 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (myClue.getCorrectResponseIndex() == index) {
-                        Toast.makeText(parent, "Correct!", Toast.LENGTH_SHORT).show();
-                        myScore++;
+                        Toast.makeText(parent, "Correct! +5 points", Toast.LENGTH_SHORT).show();
+                        myScore += 5;
                         nextClue(null);
                     } else {
-                        Toast.makeText(parent, "No, that is not correct", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parent, "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
+                        myScore--;
                     }
                 }
             });
@@ -115,7 +114,6 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 getString(R.string.SHARED_PREFS), MODE_PRIVATE);
         myScore = sharedPreferences.getInt(
                 getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
-        myOriginalScore = myScore;
     }
 
     @Override
@@ -128,8 +126,6 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, myScore);
         editor.apply();
-        String message = "You earned " + (myScore - myOriginalScore) + ((myScore - myOriginalScore) == 1 ? " point!" : " points!");
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override
