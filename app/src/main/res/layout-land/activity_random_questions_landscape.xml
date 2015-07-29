@@ -6,12 +6,6 @@
     android:padding="10dp"
     tools:context="rogden33.jeopardytrivia.RandomQuestionsActivity">
 
-    <Button
-        android:id="@+id/randomQuestions_Button_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="nextClue"
-        android:text="Next" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,33 +43,59 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <Button
-                android:id="@+id/randomQuestions_Button_choiceA"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/randomQuestions_Button_choiceB"
+                <Button
+                    android:id="@+id/randomQuestions_Button_choiceA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/randomQuestions_Button_choiceB"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/randomQuestions_Button_choiceC"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                <Button
+                    android:id="@+id/randomQuestions_Button_choiceC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
 
-            <Button
-                android:id="@+id/randomQuestions_Button_choiceD"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
+                <Button
+                    android:id="@+id/randomQuestions_Button_choiceD"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:id="@+id/randomQuestions_Button_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="nextClue"
+        android:text="Next" />
 
 </LinearLayout>

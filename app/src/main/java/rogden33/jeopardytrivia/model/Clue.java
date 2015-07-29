@@ -1,5 +1,6 @@
 package rogden33.jeopardytrivia.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,7 +11,7 @@ import java.util.Set;
 /**
  * Created by Robert on 7/27/2015.
  */
-public class Clue {
+public class Clue implements Serializable {
 
     public static final int NUMBER_OF_ANSWERS = 4;
 

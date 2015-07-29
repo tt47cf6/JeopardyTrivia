@@ -15,6 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -30,7 +31,7 @@ import rogden33.jeopardytrivia.RandomQuestionsActivity;
 /**
  * Created by Robert on 7/27/2015.
  */
-public class QuestionBank {
+public class QuestionBank implements Serializable {
 
     private static final int BATCH_SIZE = 50;
 
