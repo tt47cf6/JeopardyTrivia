@@ -11,8 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-import rogden33.jeopardytrivia.model.User;
-
 public class UsersDB {
 
     public static final int DB_VERSION = 1;
@@ -36,7 +34,6 @@ public class UsersDB {
             ContentValues contentValues = new ContentValues();
             contentValues.put("username", username);
             contentValues.put("pin", hash);
-            contentValues.put("highScore", "0");
             long rowId = mySQLDB.insert("Users", null,
                     contentValues);
             return rowId != -1;
@@ -66,9 +63,9 @@ public class UsersDB {
         return result;
     }
 
-    public User login(String username, String pin) {
+    public String login(String username, String pin) {
         // get entry from DB
-        String[] columns = new String[]{"username", "pin", "highScore"};
+        String[] columns = new String[]{"username", "pin"};
         Cursor c = mySQLDB.query(
                 "Users",
                 columns,
@@ -83,13 +80,12 @@ public class UsersDB {
         }
         c.moveToFirst();
         String pinHash = c.getString(1);
-        String highScore = c.getString(2);
         // hash and check
         try {
             MessageDigest hasher = MessageDigest.getInstance("SHA-256");
             String hash = new String(hasher.digest((username + pin).getBytes()));
             if (hash.equals(pinHash)) {
-                return new User(username, Integer.parseInt(highScore));
+                return username;
             }
         } catch (NoSuchAlgorithmException e) {
             // do nothing
@@ -110,7 +106,7 @@ public class UsersDB {
 
 class UserInfoDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_SQL =
-            "CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, pin TEXT, highScore TEXT)";
+            "CREATE TABLE IF NOT EXISTS Users (username TEXT PRIMARY KEY, pin TEXT)";
     private static final String DROP_USER_SQL =
             "DROP TABLE IF EXISTS Users";
 

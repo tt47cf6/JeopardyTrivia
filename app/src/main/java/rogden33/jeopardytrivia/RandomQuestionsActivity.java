@@ -1,13 +1,13 @@
 package rogden33.jeopardytrivia;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.hardware.SensorManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +18,8 @@ import rogden33.jeopardytrivia.model.QuestionBank;
 
 
 public class RandomQuestionsActivity extends ActionBarActivity {
+
+    public static final String USERNAME_EXTRA_KEY = "rogden33.RandomQuestions.usernameExtra";
 
     public static final String LOADING_TEXT = "Loading...";
 
@@ -41,9 +43,16 @@ public class RandomQuestionsActivity extends ActionBarActivity {
 
     private Clue myClue;
 
+    private String myUsername;
+
+    private int myScore;
+
+    private int myOriginalScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
         Log.d("Random", savedInstanceState == null ? "null" : savedInstanceState.toString());
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_random_questions);
@@ -82,6 +91,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     if (myClue.getCorrectResponseIndex() == index) {
                         Toast.makeText(parent, "Correct!", Toast.LENGTH_SHORT).show();
+                        myScore++;
                         nextClue(null);
                     } else {
                         Toast.makeText(parent, "No, that is not correct", Toast.LENGTH_SHORT).show();
@@ -96,6 +106,30 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_random_questions, menu);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.SHARED_PREFS), MODE_PRIVATE);
+        myScore = sharedPreferences.getInt(
+                getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
+        myOriginalScore = myScore;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences sharedPreferences =
+                getSharedPreferences(
+                        getString(R.string.SHARED_PREFS),
+                        Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, myScore);
+        editor.apply();
+        String message = "You earned " + (myScore - myOriginalScore) + ((myScore - myOriginalScore) == 1 ? " point!" : " points!");
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override

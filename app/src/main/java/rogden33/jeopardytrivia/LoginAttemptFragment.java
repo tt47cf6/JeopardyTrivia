@@ -16,7 +16,6 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import rogden33.jeopardytrivia.database.UsersDB;
-import rogden33.jeopardytrivia.model.User;
 
 
 /**
@@ -55,13 +54,13 @@ public class LoginAttemptFragment extends Fragment {
                     return;
                 }
                 String pin = pinEntry.getText().toString();
-                User user = db.login(username, pin);
+                String authenticatedUser = db.login(username, pin);
                 db.closeDB();
-                if (user == null) {
+                if (authenticatedUser == null) {
                     Toast.makeText(getActivity(), "Could not authenticate", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
-                    intent.putExtra(MainMenuActivity.USER_EXTRA_ID, user.serialize());
+                    intent.putExtra(MainMenuActivity.USER_EXTRA_ID, authenticatedUser);
                     startActivity(intent);
                     Toast.makeText(getActivity(), "Welcome, " + username, Toast.LENGTH_LONG).show();
                     getActivity().finish();

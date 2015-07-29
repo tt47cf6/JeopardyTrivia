@@ -14,5 +14,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_random_questions">RandomQuestions</string>
 
+    <string name="SHARED_PREFS">rogden33.jeopardyTrivia.sharedPreferences</string>
+    <string name="MainMenu_SharedPref_Score_Prefix">rogden33.jeopardyTrivia.sharedPreferences.mainMenu.highScore.user=</string>
+
+
 
 </resources>

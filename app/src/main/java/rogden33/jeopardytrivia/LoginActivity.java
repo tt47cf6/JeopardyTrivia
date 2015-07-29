@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import rogden33.jeopardytrivia.database.UsersDB;
-import rogden33.jeopardytrivia.model.User;
 
 
 public class LoginActivity extends ActionBarActivity {

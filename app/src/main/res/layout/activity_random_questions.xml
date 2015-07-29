@@ -20,7 +20,7 @@
 
     <View
         android:layout_width="0dp"
-        android:layout_height="20dp" />
+        android:layout_height="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +42,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <Button
                 android:id="@+id/randomQuestions_Button_choiceA"
@@ -71,7 +70,6 @@
         </LinearLayout>
 
     </ScrollView>
-
 
     <View
         android:layout_width="wrap_content"

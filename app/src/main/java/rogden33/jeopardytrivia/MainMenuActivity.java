@@ -1,6 +1,8 @@
 package rogden33.jeopardytrivia;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,49 +11,56 @@ import android.view.View;
 import android.widget.TextView;
 
 import rogden33.jeopardytrivia.database.UsersDB;
-import rogden33.jeopardytrivia.model.User;
 
 
 public class MainMenuActivity extends ActionBarActivity {
 
     public static final String USER_EXTRA_ID = "rogden33.MainMenuActivity.UserExtra";
 
-    public User myUser;
+    public String myUsername;
+
+    public int myScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        String serializedUser = getIntent().getStringExtra(USER_EXTRA_ID);
-        User user = new User(serializedUser);
-        showUser(user);
-        myUser = user;
-
+        String username = getIntent().getStringExtra(USER_EXTRA_ID);
+        myUsername = username;
     }
 
-    public void showUser(User user) {
+    public void showUser(String username) {
         // temporary, display user fields
-        TextView username = (TextView) findViewById(R.id.mainMenu_TextView_username);
-        TextView highScore = (TextView) findViewById(R.id.mainMenu_TextView_highScore);
-        username.setText(user.getUsername());
-        highScore.setText("" + user.getHighScore());
+        TextView usernameDisplay = (TextView) findViewById(R.id.mainMenu_TextView_username);
+        TextView highscoreDisplay = (TextView) findViewById(R.id.mainMenu_TextView_score);
+        usernameDisplay.setText("Username: " + username);
+        highscoreDisplay.setText("Score: " + myScore);
     }
 
-//    public void showRandomQuestion() {
-//        ConnectivityManager connMgr = (ConnectivityManager)
-//                getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-//        if (networkInfo != null && networkInfo.isConnected()) {
-//            new UserWebTask().execute("http://jservice.io/api/random?count=1");
-//        } else {
-//            Toast.makeText(this, "No network connection available.",
-//                    Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.SHARED_PREFS), MODE_PRIVATE);
+        myScore = sharedPreferences.getInt(
+                getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
+        showUser(myUsername);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences sharedPreferences =
+                getSharedPreferences(
+                        getString(R.string.SHARED_PREFS),
+                        Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, myScore);
+        editor.apply();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_menu, menu);
         return true;
     }
@@ -60,7 +69,7 @@ public class MainMenuActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.mainMenu_MenuItem_deleteUser) {
             UsersDB db = new UsersDB(this);
-            db.deleteUser(myUser.getUsername());
+            db.deleteUser(myUsername);
             db.closeDB();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
@@ -73,7 +82,14 @@ public class MainMenuActivity extends ActionBarActivity {
 
     public void randomOnClick(View v) {
         Intent intent = new Intent(this, RandomQuestionsActivity.class);
+        intent.putExtra(RandomQuestionsActivity.USERNAME_EXTRA_KEY, myUsername);
         startActivity(intent);
+    }
+
+    public void incHighScore(View v) {
+        myScore++;
+        TextView highscoreDisplay = (TextView) findViewById(R.id.mainMenu_TextView_score);
+        highscoreDisplay.setText("Score: " + myScore);
     }
 
 
