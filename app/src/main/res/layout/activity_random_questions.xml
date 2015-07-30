@@ -18,12 +18,8 @@
         android:id="@+id/randomQuestions_TextView_categoryDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-    <!-- Static vertical spacing -->
-    <View
-        android:layout_width="0dp"
-        android:layout_height="10dp" />
+        android:layout_gravity="center"
+        android:paddingBottom="10dp"/>
 
     <!-- Static clue label -->
     <TextView
