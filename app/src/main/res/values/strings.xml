@@ -1,22 +1,36 @@
 <resources>
+
+    <!-- GLOBAL TEXT ITEMS -->
     <string name="app_name">Jeopardy Trivia</string>
     <string name="action_settings">Settings</string>
+    <string name="SHARED_PREFS">rogden33.jeopardyTrivia.sharedPreferences</string>
 
     <!-- LOGIN ACTIVITY TEXT ITEMS-->
     <string name="login_welcome_text">Let\'s Play Jeopardy Trivia!</string>
     <string name="login_login_prompt">Already registered? Login below:</string>
-    <string name="login_username_hint">Enter your username...</string>
-    <string name="login_pin_hint">Enter your pin...</string>
+    <string name="login_username_hint">Enter your username</string>
+    <string name="login_pin_hint">Enter your pin</string>
     <string name="login_submit_button_text">Login</string>
     <string name="login_register_button_text">Register New User</string>
-    <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="login_loginAttempt_loginButtonText">Login</string>
+    <string name="login_loginAttempt_pinHint">Enter your pin</string>
+    <string name="login_loginUserList_promptText">OR select your username:</string>
+    <string name="login_register_userPrompt">Enter the following information:</string>
+    <string name="login_register_usernameLabel">Username:</string>
+    <string name="login_register_pinLabel">Pin:</string>
+    <string name="login_register_pinAgainLabel">Pin Again:</string>
+    <string name="login_register_submitButtonText">Submit</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_random_questions">RandomQuestions</string>
-
-    <string name="SHARED_PREFS">rogden33.jeopardyTrivia.sharedPreferences</string>
+    <!-- MAIN MENU ACTIVITY ITEMS -->
+    <string name="mainMenu_activityTitle">MainMenuActivity</string>
     <string name="MainMenu_SharedPref_Score_Prefix">rogden33.jeopardyTrivia.sharedPreferences.mainMenu.highScore.user=</string>
+    <string name="mainMenu_ButtonText_toRandomQuestions">Random Questions</string>
+    <string name="mainMenu_menuItem_deleteUserText">Delete User</string>
 
-
+    <!-- RANDOM QUESTION ACTIVITY ITEMS -->
+    <string name="randomQuestions_activityTitle">RandomQuestions</string>
+    <string name="randomQuestions_categoryLabel">CATEGORY</string>
+    <string name="randomQuestions_clueLabel">CLUE</string>
+    <string name="randomQuestions_nextButtonText">Next</string>
 
 </resources>

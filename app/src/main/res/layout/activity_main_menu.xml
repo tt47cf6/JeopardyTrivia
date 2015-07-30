@@ -7,20 +7,23 @@
     android:orientation="vertical"
     tools:context="rogden33.jeopardytrivia.MainMenuActivity">
 
+    <!-- Show the username -->
     <TextView
         android:id="@+id/mainMenu_TextView_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Show the current score -->
     <TextView
         android:id="@+id/mainMenu_TextView_score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- Button to go to RandomQuestion activity -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Random Questions"
+        android:text="@string/mainMenu_ButtonText_toRandomQuestions"
         android:onClick="randomOnClick"/>
 
 </LinearLayout>

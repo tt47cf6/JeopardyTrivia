@@ -6,6 +6,7 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
+    <!-- Static welcome text. Will eventually be an image. -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +15,7 @@
         android:textSize="50sp"
         android:typeface="sans" />
 
-
+    <!-- Fragment container -->
     <FrameLayout
         android:id="@+id/login_frameLayout_fragmentContainer"
         android:layout_width="match_parent"

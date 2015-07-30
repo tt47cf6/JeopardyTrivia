@@ -6,38 +6,47 @@
     android:padding="10dp"
     tools:context="rogden33.jeopardytrivia.RandomQuestionsActivity">
 
+    <!-- Static category label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="CATEGORY" />
+        android:text="@string/randomQuestions_categoryLabel" />
 
+    <!-- Category display -->
     <TextView
         android:id="@+id/randomQuestions_TextView_categoryDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <!-- Static vertical spacing -->
     <View
         android:layout_width="0dp"
         android:layout_height="20dp" />
 
+    <!-- Static clue label  -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="CLUE" />
+        android:text="@string/randomQuestions_clueLabel" />
 
+    <!-- Clue display -->
     <TextView
         android:id="@+id/randomQuestions_TextView_clueDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
 
+    <!-- Scroll the buttons in the event they are very large -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Use a static 2x2 grid-like display with equal weight. The GridLayout was not able to
+             nicely weight everything for me, hence this usage. -->
+        <!-- Top row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!-- Choice A -->
                 <Button
                     android:id="@+id/randomQuestions_Button_choiceA"
                     android:layout_width="0dp"
@@ -55,6 +65,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"/>
 
+                <!-- Choice B -->
                 <Button
                     android:id="@+id/randomQuestions_Button_choiceB"
                     android:layout_width="0dp"
@@ -63,11 +74,13 @@
                     android:layout_gravity="center"/>
             </LinearLayout>
 
+            <!-- Bottom row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!-- Choice C -->
                 <Button
                     android:id="@+id/randomQuestions_Button_choiceC"
                     android:layout_width="0dp"
@@ -75,6 +88,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"/>
 
+                <!-- Choice D -->
                 <Button
                     android:id="@+id/randomQuestions_Button_choiceD"
                     android:layout_width="0dp"
@@ -82,20 +96,23 @@
                     android:layout_weight="1"
                     android:layout_gravity="center"/>
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>
 
+    <!-- Dynamic spacing to put the Next button at the bottom of the screen -->
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- THe next button -->
     <Button
         android:id="@+id/randomQuestions_Button_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="nextClue"
-        android:text="Next" />
+        android:text="@string/randomQuestions_nextButtonText" />
 
 </LinearLayout>

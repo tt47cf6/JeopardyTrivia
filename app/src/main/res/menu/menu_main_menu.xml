@@ -2,6 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="rogden33.jeopardytrivia.MainMenuActivity">
-    <item android:id="@+id/mainMenu_MenuItem_deleteUser" android:title="Delete User"
-        android:orderInCategory="100" app:showAsAction="never" />
+
+    <!-- Delete user entry -->
+    <item
+        android:id="@+id/mainMenu_MenuItem_deleteUser"
+        android:title="@string/mainMenu_menuItem_deleteUserText"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>

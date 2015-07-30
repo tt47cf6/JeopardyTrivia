@@ -6,26 +6,31 @@
     tools:context="rogden33.jeopardytrivia.RegisterFragment"
     android:orientation="vertical">
 
+    <!-- Static user prompt to fill in the fields -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter the following information:"/>
+        android:text="@string/login_register_userPrompt"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Static username label -->
         <TextView
             android:layout_width="84dp"
             android:layout_height="wrap_content"
-            android:text="Username:"/>
+            android:text="@string/login_register_usernameLabel"/>
 
+        <!-- Username entry -->
         <EditText
             android:id="@+id/login_EditText_register_usernameEntry"
-            android:layout_width="match_parent"
-            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:inputType="text"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -33,16 +38,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Static pin label -->
         <TextView
             android:layout_width="84dp"
             android:layout_height="wrap_content"
-            android:text="Pin:"/>
+            android:text="@string/login_register_pinLabel"/>
 
+        <!-- pin entry -->
         <EditText
             android:id="@+id/login_EditText_register_pinEntry"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:inputType="numberPassword"/>
     </LinearLayout>
 
@@ -51,24 +58,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!-- Static pin reentry label -->
         <TextView
             android:layout_width="84dp"
             android:layout_height="wrap_content"
-            android:text="Pin Again:"/>
+            android:text="@string/login_register_pinAgainLabel"/>
 
+        <!-- pin reentry -->
         <EditText
             android:id="@+id/login_EditText_register_pinEntry2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:inputType="numberPassword"/>
     </LinearLayout>
 
+    <!-- Submit button -->
     <Button
         android:id="@+id/login_Button_register_submitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Submit"/>
+        android:text="@string/login_register_submitButtonText"/>
 
 </LinearLayout>

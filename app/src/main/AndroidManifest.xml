@@ -22,10 +22,10 @@
         </activity>
         <activity
             android:name=".MainMenuActivity"
-            android:label="@string/title_activity_main_menu"></activity>
+            android:label="@string/mainMenu_activityTitle"></activity>
         <activity
             android:name=".RandomQuestionsActivity"
-            android:label="@string/title_activity_random_questions"></activity>
+            android:label="@string/randomQuestions_activityTitle"></activity>
     </application>
 
 </manifest>
