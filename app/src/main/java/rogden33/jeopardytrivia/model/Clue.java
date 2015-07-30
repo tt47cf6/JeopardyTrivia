@@ -1,83 +1,131 @@
 package rogden33.jeopardytrivia.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
- * Created by Robert on 7/27/2015.
+ * An immutable class that holds all the fields needed in a clue/response pair, as well as
+ * other random answers selected from the QuestionBank. This is used for multiple choice selection
+ * when that is chosen in an Activity or Fragment.
  */
 public class Clue implements Serializable {
 
-    public static final int NUMBER_OF_ANSWERS = 4;
-
-    private final QuestionBank myBank;
-
+    /**
+     * The clue.
+     */
     private final String myClue;
 
+    /**
+     * The response.
+     */
     private final String myResponse;
 
+    /**
+     * The category.
+     */
     private final String myCategory;
 
+    /**
+     * The question ID from the JService webserivce.
+     */
     private final String myID;
 
+    /**
+     * The monetary value, mapped to difficulty of a question.
+     */
     private final int myDifficulty;
 
+    /**
+     * An array of possible answers, including the correct response.
+     */
     private final String[] mySelectableAnswers;
 
-    private int myCorrectResponseIndex;
+    /**
+     * The index in the mySelectableAnswers array of the correct response.
+     */
+    private final int myCorrectResponseIndex;
 
-    public Clue(QuestionBank qb, String clue, String response, String category, String id, int difficulty) {
-        myBank = qb;
+    /**
+     * A constructor that sets all the final fields.
+     *
+     * @param clue the clue
+     * @param response the response
+     * @param category the category
+     * @param id the JService ID
+     * @param difficulty the difficulty
+     * @param possible the other possible selections
+     * @param correctIndex the index of the correct response in the possible selections
+     */
+    public Clue(String clue, String response, String category, String id, int difficulty, String[] possible, int correctIndex) {
         myClue = clue;
         myResponse = response;
         myCategory = category;
         myID = id;
         myDifficulty = difficulty;
-        mySelectableAnswers = new String[NUMBER_OF_ANSWERS];
+        mySelectableAnswers = possible.clone();
+        myCorrectResponseIndex = correctIndex;
     }
 
+    /**
+     * A getter for the clue.
+     *
+     * @return the clue
+     */
     public String getClue() {
         return myClue;
     }
 
+    /**
+     * A getter for the response.
+     *
+     * @return the response
+     */
     public String getResponse() {
         return myResponse;
     }
 
+    /**
+     * A getter for the category.
+     *
+     * @return the category
+     */
     public String getCategory() {
         return myCategory;
     }
 
+    /**
+     * A getter for the id.
+     *
+     * @return the ID
+     */
     public String getID() {
         return myID;
     }
 
+    /**
+     * A getter for the selectable answers.
+     *
+     * @return the selectable answers
+     */
     public String[] getSelectableAnswers() {
-        Set<String> possibleSet = new HashSet<String>();
-        possibleSet.add(myResponse);
-        while (possibleSet.size() < NUMBER_OF_ANSWERS) {
-            possibleSet.add(myBank.getRandomAnswer());
-        }
-        List<String> shuffleMe = new ArrayList<String>(possibleSet);
-        Collections.shuffle(shuffleMe);
-        for (int i = 0; i < NUMBER_OF_ANSWERS; i++) {
-            if (shuffleMe.get(i).equals(myResponse)) {
-                myCorrectResponseIndex = i;
-            }
-            mySelectableAnswers[i] = shuffleMe.get(i);
-        }
         return mySelectableAnswers.clone();
     }
 
+    /**
+     * A getter for the difficulty.
+     *
+     * @return the diffucilty
+     */
     public int getDifficulty() {
         return myDifficulty;
     }
 
-    public int getCorrectResponseIndex() { return myCorrectResponseIndex; }
+    /**
+     * A getter for the correct response index.
+     *
+     * @return the correct response index
+     */
+    public int getCorrectResponseIndex() {
+        return myCorrectResponseIndex;
+    }
 
 }

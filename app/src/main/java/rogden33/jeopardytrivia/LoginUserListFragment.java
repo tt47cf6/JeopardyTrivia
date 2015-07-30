@@ -1,12 +1,9 @@
 package rogden33.jeopardytrivia;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.app.ListFragment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,28 +18,39 @@ import rogden33.jeopardytrivia.database.UsersDB;
 
 
 /**
- * A fragment representing a list of Items.
- * <p>
+ * This fragment displays a list of users in a ListView for the user to select. When a username is
+ * selected, the fragment is replaced with the LoginAttemptFragment. When that happens, this
+ * fragment is added to the back stack to allow the user to return to this list.
+ * At the top of this fragment is also a button to register a new user which replaces this fragment
+ * with the register user fragment. Once that fragment is complete, the user is returned to this
+ * fragment to login with their new credentials.
  */
 public class LoginUserListFragment extends Fragment {
 
     /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
+     * {@inheritDoc}
      */
     public LoginUserListFragment() {
+        // required empty constructor
     }
 
+    /**
+     * {@inheritDoc}
+     * Sets up the ListView and ListAdapter. Sets up the item onClick listener to replace
+     * this fragment with the LoginAttemptFragment. Also sets up the register button listener.
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        // get a list of all usernames
         UsersDB db = new UsersDB(getActivity());
         final List<String> users = db.getAllUsernames();
-        Log.i("UserFrag", users.toString());
         db.closeDB();
+        // initialize the View
         View v = inflater.inflate(R.layout.fragment_login_user_list, container,
                 false);
+        // set up the ListView adapter
         ListView userList = (ListView)
                 v.findViewById(R.id.login_listView_usersFragment);
         ArrayAdapter<String> adapter = new
@@ -50,13 +58,18 @@ public class LoginUserListFragment extends Fragment {
                 android.R.layout.simple_list_item_1
                 , android.R.id.text1, users);
         userList.setAdapter(adapter);
+        // set up the on item click listener
         userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * {@inheritDoc}
+             * Goes to the LoginUserAttempt fragment, giving the selected username as an argument.
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView,
                                     View view, int i, long l) {
-                Log.i("UserFrag", "You clicked user " + users.get(i));
                 // set up fragment
                 LoginAttemptFragment frag = new LoginAttemptFragment();
+                // give username as argument
                 Bundle args = new Bundle();
                 args.putString(LoginAttemptFragment.USERNAME_ARG, users.get(i));
                 frag.setArguments(args);
@@ -67,9 +80,14 @@ public class LoginUserListFragment extends Fragment {
                 trans.commit();
             }
         });
+        // sets up the register button listener
         Button registerButton = (Button) v.findViewById(R.id.login_Button_newUserButton);
         registerButton.setOnClickListener(new Button.OnClickListener() {
-
+            /**
+             * Replaces the current fragment with the RegisterFragment.
+             *
+             * @param v the current view
+             */
             @Override
             public void onClick(View v) {
                 FragmentTransaction trans = getActivity().getSupportFragmentManager().beginTransaction();
