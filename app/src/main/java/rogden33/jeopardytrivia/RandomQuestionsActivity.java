@@ -16,47 +16,111 @@ import android.widget.Toast;
 import rogden33.jeopardytrivia.model.Clue;
 import rogden33.jeopardytrivia.model.QuestionBank;
 
-
+/**
+ * An activity to play with random clues and responses. Responses are selected from an array of
+ * other random responses, only one of which is correct. For each correctly chosen response, 5
+ * points are added to the user's score. For each incorrectly chosen response, 1 point is taken
+ * from the score. Clues may be skipped without penalty.
+ * This activity is designed to work in either portrait or landscape orientations. When the device's
+ * orientation changed, this activity is restarted with all state information going into the
+ * savedInstanceState Bundle. This allows for resetting of the content view to another layout
+ * designed for landscpae orientation.
+ * Upon first loading, this activity shows a static Loading... text until the QuestionBank
+ * uses the display() callback method to inform this activity that there are now clues to display.
+ */
 public class RandomQuestionsActivity extends ActionBarActivity {
 
+    /**
+     * The key for the username in the saved instance state bundle.
+     */
     public static final String USERNAME_EXTRA_KEY = "rogden33.RandomQuestions.usernameExtra";
 
+    /**
+     * The static loading text when the activity first starts, before the QuestionBank has loaded.
+     */
     public static final String LOADING_TEXT = "Loading...";
 
+    /**
+     * The key for the Clue in the saved instance state bundle.
+     */
     public static final String MYCLUE_BUNDLE_KEY = "rogden33.RandomQuestions.myClue";
 
+    /**
+     * The key for the QuestionBank in the saved instance state bundle.
+     */
     public static final String QUESTIONBANK_BUNDLE_KEY = "rogden33.RandomQuestions.questionBank";
 
+    /**
+     * The key for the first response selection button in the saved instance state bundle.
+     */
     public static final String BUTTONA_BUNDLE_KEY = "rogden33.RandomQuestions.buttonA";
 
+    /**
+     * The key for the second response selection button in the saved instance state bundle.
+     */
     public static final String BUTTONB_BUNDLE_KEY = "rogden33.RandomQuestions.buttonB";
 
+    /**
+     * The key for the third response selection button in the saved instance state bundle.
+     */
     public static final String BUTTONC_BUNDLE_KEY = "rogden33.RandomQuestions.buttonC";
 
+    /**
+     * The key for the fourth response selection button in the saved instance state bundle.
+     */
     public static final String BUTTOND_BUNDLE_KEY = "rogden33.RandomQuestions.buttonD";
 
+    /**
+     * A reference to the QuestionBank to get the next random clue from.
+     */
     private QuestionBank myQuestionBank;
 
+    /**
+     * An array of references to the selection buttons. This array allows for prettier code.
+     */
     private Button[] myAnswerButtons;
 
+    /**
+     * True while the loading text is to be dispalyed. Set to false once the first batch is loaded
+     * in the QuestionBank.
+     */
     private boolean myFirstDisplayFlag = true;
 
+    /**
+     * The current Clue being displayed.
+     */
     private Clue myClue;
 
+    /**
+     * The username of the current logged in user.
+     */
     private String myUsername;
 
+    /**
+     * The current score of the user. This is saved to SharedPrefs on pause
+     */
     private int myScore;
 
+    /**
+     * Sets up the activity. If the savedInstanceState is not null, the previous state is
+     * restored. Otherwise, the TextViews are loaded with the static loading text. Either way,
+     * each button is also given its on click listener in order to add or subtract points and
+     * display a message to the user.
+     *
+     * @param savedInstanceState the saved instance state. may not be null on orientation change
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // get username extra
         myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
-        Log.d("Random", savedInstanceState == null ? "null" : savedInstanceState.toString());
+        // set content view based on current orientation
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_random_questions);
         } else {
             setContentView(R.layout.activity_random_questions_landscape);
         }
+        // get references to all view objects
         Button nextButton = (Button) findViewById(R.id.randomQuestions_Button_next);
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);
         TextView cate = (TextView) findViewById(R.id.randomQuestions_TextView_categoryDisplay);
@@ -65,13 +129,17 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         Button choiceC = (Button) findViewById(R.id.randomQuestions_Button_choiceC);
         Button choiceD = (Button) findViewById(R.id.randomQuestions_Button_choiceD);
         myAnswerButtons = new Button[] {choiceA, choiceB, choiceC, choiceD};
+        // keep a reference to this activity for use in the Button onclick listeners
         final RandomQuestionsActivity parent = this;
         if (savedInstanceState == null) {
+            // no saved state, use loading text
             myQuestionBank = new QuestionBank(this);
+            // disable next button until there are questions available
             nextButton.setEnabled(false);
             clue.setText(LOADING_TEXT);
             cate.setText(LOADING_TEXT);
         } else {
+            // restore previous state
             myClue = (Clue) savedInstanceState.getSerializable(MYCLUE_BUNDLE_KEY);
             myQuestionBank = (QuestionBank) savedInstanceState.getSerializable(QUESTIONBANK_BUNDLE_KEY);
             clue.setText(Html.fromHtml(myClue.getClue()));
@@ -81,6 +149,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
             choiceC.setText(savedInstanceState.getString(BUTTONC_BUNDLE_KEY));
             choiceD.setText(savedInstanceState.getString(BUTTOND_BUNDLE_KEY));
         }
+        // create on click listeners for the buttons
         for (int i = 0; i < myAnswerButtons.length; i++) {
             final int index = i;
             Button button = myAnswerButtons[i];
@@ -88,10 +157,12 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 @Override
                 public void onClick(View v) {
                     if (myClue.getCorrectResponseIndex() == index) {
+                        // correct selection
                         Toast.makeText(parent, "Correct! +5 points", Toast.LENGTH_SHORT).show();
                         myScore += 5;
                         nextClue(null);
                     } else {
+                        // incorrect selection
                         Toast.makeText(parent, "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
                         myScore--;
                     }
@@ -100,13 +171,19 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         }
     }
 
+    /**
+     * {@inheritDoc
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_random_questions, menu);
         return true;
     }
 
+    /**
+     * On resume, load in the current score from SharedPreferences. The key uses a prefix along with
+     * the user name for effective use of the SharedPreferences.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -116,6 +193,10 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
     }
 
+    /**
+     * On pause, save the current score. The key uses a prefix along with the user name for
+     * effective use of the SharedPreferences.
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -128,13 +209,21 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         editor.apply();
     }
 
+    /**
+     * When the activity is forced to close, remember all of the state information using the keys
+     * above.
+     *
+     * @param outState the saved state information
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        // get refernece to the buttons
         Button choiceA = (Button) findViewById(R.id.randomQuestions_Button_choiceA);
         Button choiceB = (Button) findViewById(R.id.randomQuestions_Button_choiceB);
         Button choiceC = (Button) findViewById(R.id.randomQuestions_Button_choiceC);
         Button choiceD = (Button) findViewById(R.id.randomQuestions_Button_choiceD);
+        // save state
         outState.putSerializable(MYCLUE_BUNDLE_KEY, myClue);
         outState.putSerializable(QUESTIONBANK_BUNDLE_KEY, myQuestionBank);
         outState.putString(BUTTONA_BUNDLE_KEY, choiceA.getText().toString());
@@ -143,23 +232,39 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         outState.putString(BUTTOND_BUNDLE_KEY, choiceD.getText().toString());
     }
 
+    /**
+     * This callback-like method is called each time the QuestionBank fetches another batch of
+     * Clues. The first time this is called, load the first random question. Every other time, do
+     * nothing.
+     */
     public void display() {
         if (myFirstDisplayFlag) {
-            Clue next = myQuestionBank.getNextRandom();
+            // enable next button
             Button nextButton = (Button) findViewById(R.id.randomQuestions_Button_next);
             nextButton.setEnabled(true);
             myFirstDisplayFlag = false;
+            // get and display clue
             nextClue(null);
         }
     }
 
+    /**
+     * Called whenever the next question should be shown, whether as an onClick method for the
+     * Next button, or programmatically in this class. This method loads in the next random question
+     * from the QuestionBank and sets the TextViews and Button texts appropriately.
+     *
+     * @param v the current View. not used, so OK to be null
+     */
     public void nextClue(View v) {
+        // get and store next clue
         Clue next = myQuestionBank.getNextRandom();
         myClue = next;
+        // set TextViews
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);
         TextView cate = (TextView) findViewById(R.id.randomQuestions_TextView_categoryDisplay);
         clue.setText(Html.fromHtml(next.getClue()));
         cate.setText(Html.fromHtml(next.getCategory()));
+        // set Buttons
         String[] possibleAnswers = next.getSelectableAnswers();
         for (int i = 0; i < myAnswerButtons.length; i++) {
             myAnswerButtons[i].setText(Html.fromHtml(possibleAnswers[i]));

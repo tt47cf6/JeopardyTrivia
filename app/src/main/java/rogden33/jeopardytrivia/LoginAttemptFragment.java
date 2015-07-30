@@ -75,6 +75,7 @@ public class LoginAttemptFragment extends Fragment {
                 } else {
                     // authentication successful, intent to MainMenu
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+                    // pass username as an extra
                     intent.putExtra(MainMenuActivity.USER_EXTRA_ID, authenticatedUser);
                     startActivity(intent);
                     Toast.makeText(getActivity(), "Welcome, " + username, Toast.LENGTH_SHORT).show();
