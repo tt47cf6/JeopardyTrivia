@@ -36,5 +36,13 @@
         android:background="@drawable/default_button_theme"
         android:layout_margin="5dp"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mainMenu_ButtonText_toGameBoard"
+        android:onClick="gameBoardOnClick"
+        android:background="@drawable/default_button_theme"
+        android:layout_margin="5dp"/>
+
 
 </LinearLayout>

@@ -38,7 +38,7 @@ import rogden33.jeopardytrivia.RandomQuestionsActivity;
  * first batch of questions that is fetched, the first several responses are skipped in order to
  * create a reasonable resource of random responses to pull from.
  */
-public class QuestionBank implements Serializable {
+public class RandomQuestionBank implements Serializable {
 
     /**
      * The size of the batch to fetch.
@@ -90,7 +90,7 @@ public class QuestionBank implements Serializable {
      *
      * @param act the parent activity
      */
-    public QuestionBank(final RandomQuestionsActivity act) {
+    public RandomQuestionBank(final RandomQuestionsActivity act) {
         myRandomClues = new ConcurrentLinkedQueue<Clue>();
         myRandomAnswers = Collections.synchronizedList(new ArrayList<String>());
         myRandom = new Random();
@@ -139,7 +139,7 @@ public class QuestionBank implements Serializable {
     }
 
     /**
-     * Uses the QuestionGetter AsyncTask to get another batch of questions if there is an
+     * Uses the RandomQuestionGetter AsyncTask to get another batch of questions if there is an
      * available network connection.
      */
     private void getNextBatch() {
@@ -147,7 +147,7 @@ public class QuestionBank implements Serializable {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
             // ok connection
-            new QuestionGetter().execute("http://jservice.io/api/random?count=" + BATCH_SIZE);
+            new RandomQuestionGetter().execute("http://jservice.io/api/random?count=" + BATCH_SIZE);
         } else {
             // no connection
             Toast.makeText(myActivity, "No network connection available.", Toast.LENGTH_SHORT).show();
@@ -159,10 +159,10 @@ public class QuestionBank implements Serializable {
      * JSON format, which is parsed in the postExecute method. The handling of the getting
      * selectable responses for a Clue is also done there.
      */
-    private class QuestionGetter extends AsyncTask<String, Void,
+    private class RandomQuestionGetter extends AsyncTask<String, Void,
             String> {
 
-        private static final String TAG = "QuestionGetter";
+        private static final String TAG = "RandomQuestionGetter";
 
         /**
          * Fetch a batch of questions.

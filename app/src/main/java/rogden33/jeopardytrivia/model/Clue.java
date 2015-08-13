@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 /**
  * An immutable class that holds all the fields needed in a clue/response pair, as well as
- * other random answers selected from the QuestionBank. This is used for multiple choice selection
+ * other random answers selected from the RandomQuestionBank. This is used for multiple choice selection
  * when that is chosen in an Activity or Fragment.
  */
-public class Clue implements Serializable {
+public class Clue implements Serializable, Comparable<Clue> {
 
     /**
      * The clue.
@@ -126,6 +126,10 @@ public class Clue implements Serializable {
      */
     public int getCorrectResponseIndex() {
         return myCorrectResponseIndex;
+    }
+
+    public int compareTo(Clue other) {
+        return other.myDifficulty - myDifficulty;
     }
 
 }

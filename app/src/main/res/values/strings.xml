@@ -43,6 +43,10 @@
     <string name="viewScores_shareWith">Share with</string>
     <string name="viewScore_staticShareText">Check out my score in Jeopardy Trivia!: </string>
     <string name="viewScore_staticHighScoreShareText">Check out my top score in Jeopardy Trivia!: </string>
+    <string name="title_activity_game_board">GameBoardActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="mainMenu_ButtonText_toGameBoard">Play with Jeopardy Board</string>
 
 
 </resources>

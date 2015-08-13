@@ -7,17 +7,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import rogden33.jeopardytrivia.model.Clue;
-import rogden33.jeopardytrivia.model.QuestionBank;
+import rogden33.jeopardytrivia.model.RandomQuestionBank;
 
 /**
  * An activity to play with random clues and responses. Responses are selected from an array of
@@ -28,7 +25,7 @@ import rogden33.jeopardytrivia.model.QuestionBank;
  * orientation changed, this activity is restarted with all state information going into the
  * savedInstanceState Bundle. This allows for resetting of the content view to another layout
  * designed for landscpae orientation.
- * Upon first loading, this activity shows a static Loading... text until the QuestionBank
+ * Upon first loading, this activity shows a static Loading... text until the RandomQuestionBank
  * uses the display() callback method to inform this activity that there are now clues to display.
  */
 public class RandomQuestionsActivity extends ActionBarActivity {
@@ -39,7 +36,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     public static final String USERNAME_EXTRA_KEY = "rogden33.RandomQuestions.usernameExtra";
 
     /**
-     * The static loading text when the activity first starts, before the QuestionBank has loaded.
+     * The static loading text when the activity first starts, before the RandomQuestionBank has loaded.
      */
     public static final String LOADING_TEXT = "Loading...";
 
@@ -49,7 +46,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     public static final String MYCLUE_BUNDLE_KEY = "rogden33.RandomQuestions.myClue";
 
     /**
-     * The key for the QuestionBank in the saved instance state bundle.
+     * The key for the RandomQuestionBank in the saved instance state bundle.
      */
     public static final String QUESTIONBANK_BUNDLE_KEY = "rogden33.RandomQuestions.questionBank";
 
@@ -79,9 +76,9 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     public static final int STREAK_RESET = 0;
 
     /**
-     * A reference to the QuestionBank to get the next random clue from.
+     * A reference to the RandomQuestionBank to get the next random clue from.
      */
-    private QuestionBank myQuestionBank;
+    private RandomQuestionBank myRandomQuestionBank;
 
     /**
      * An array of references to the selection buttons. This array allows for prettier code.
@@ -90,7 +87,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
 
     /**
      * True while the loading text is to be dispalyed. Set to false once the first batch is loaded
-     * in the QuestionBank.
+     * in the RandomQuestionBank.
      */
     private boolean myFirstDisplayFlag = true;
 
@@ -146,7 +143,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         final RandomQuestionsActivity parent = this;
         if (savedInstanceState == null) {
             // no saved state, use loading text
-            myQuestionBank = new QuestionBank(this);
+            myRandomQuestionBank = new RandomQuestionBank(this);
             // disable next button until there are questions available
             nextButton.setEnabled(false);
             clue.setText(LOADING_TEXT);
@@ -155,7 +152,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         } else {
             // restore previous state
             myClue = (Clue) savedInstanceState.getSerializable(MYCLUE_BUNDLE_KEY);
-            myQuestionBank = (QuestionBank) savedInstanceState.getSerializable(QUESTIONBANK_BUNDLE_KEY);
+            myRandomQuestionBank = (RandomQuestionBank) savedInstanceState.getSerializable(QUESTIONBANK_BUNDLE_KEY);
             clue.setText(Html.fromHtml(myClue.getClue()));
             cate.setText(Html.fromHtml(myClue.getCategory()));
             streak.setText(savedInstanceState.getString(STREAK_BUNDLE_KEY));
@@ -247,7 +244,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         Button choiceD = (Button) findViewById(R.id.randomQuestions_Button_choiceD);
         // save state
         outState.putSerializable(MYCLUE_BUNDLE_KEY, myClue);
-        outState.putSerializable(QUESTIONBANK_BUNDLE_KEY, myQuestionBank);
+        outState.putSerializable(QUESTIONBANK_BUNDLE_KEY, myRandomQuestionBank);
         outState.putString(BUTTONA_BUNDLE_KEY, choiceA.getText().toString());
         outState.putString(BUTTONB_BUNDLE_KEY, choiceB.getText().toString());
         outState.putString(BUTTONC_BUNDLE_KEY, choiceC.getText().toString());
@@ -256,7 +253,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     }
 
     /**
-     * This callback-like method is called each time the QuestionBank fetches another batch of
+     * This callback-like method is called each time the RandomQuestionBank fetches another batch of
      * Clues. The first time this is called, load the first random question. Every other time, do
      * nothing.
      */
@@ -274,13 +271,13 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     /**
      * Called whenever the next question should be shown, whether as an onClick method for the
      * Next button, or programmatically in this class. This method loads in the next random question
-     * from the QuestionBank and sets the TextViews and Button texts appropriately.
+     * from the RandomQuestionBank and sets the TextViews and Button texts appropriately.
      *
      * @param v the current View. not used, so OK to be null
      */
     public void nextClue(View v) {
         // get and store next clue
-        Clue next = myQuestionBank.getNextRandom();
+        Clue next = myRandomQuestionBank.getNextRandom();
         myClue = next;
         // set TextViews
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);

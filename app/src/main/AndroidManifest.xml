@@ -30,6 +30,10 @@
             android:name=".ViewScores"
             android:label="@string/title_activity_view_scores" >
         </activity>
+        <activity
+            android:name=".GameBoardActivity"
+            android:label="@string/title_activity_game_board" >
+        </activity>
     </application>
 
 </manifest>
