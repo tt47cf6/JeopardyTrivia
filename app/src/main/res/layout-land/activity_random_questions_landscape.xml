@@ -6,20 +6,98 @@
     android:padding="10dp"
     tools:context="rogden33.jeopardytrivia.RandomQuestionsActivity">
 
-    <!-- Static category label -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/randomQuestions_categoryLabel" />
+        android:orientation="horizontal">
 
-    <!-- Category display -->
-    <TextView
-        android:id="@+id/randomQuestions_TextView_categoryDisplay"
-        android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:text="@string/randomQuestions_streakLabel" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <!-- Static category label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/randomQuestions_categoryLabel" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/randomQuestions_scoreLabel" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingBottom="10dp"/>
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/randomQuestions_TextView_streakDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <!-- Category display -->
+            <TextView
+                android:id="@+id/randomQuestions_TextView_categoryDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:paddingBottom="10dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/randomQuestions_TextView_scoreDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end" />
+        </FrameLayout>
+
+
+    </LinearLayout>
 
     <!-- Static clue label  -->
     <TextView
@@ -103,12 +181,26 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <!-- THe next button -->
-    <Button
-        android:id="@+id/randomQuestions_Button_next"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="nextClue"
-        android:text="@string/randomQuestions_nextButtonText" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/randomQuestions_quitButtonText"
+            android:onClick="quit"/>
+
+        <!-- Next button -->
+        <Button
+            android:id="@+id/randomQuestions_Button_next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="nextClue"
+            android:text="@string/randomQuestions_nextButtonText" />
+
+    </LinearLayout>
 
 </LinearLayout>

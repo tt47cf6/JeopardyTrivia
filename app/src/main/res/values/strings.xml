@@ -32,5 +32,8 @@
     <string name="randomQuestions_categoryLabel">CATEGORY</string>
     <string name="randomQuestions_clueLabel">CLUE</string>
     <string name="randomQuestions_nextButtonText">Next</string>
+    <string name="randomQuestions_scoreLabel">Score</string>
+    <string name="randomQuestions_streakLabel">Streak</string>
+    <string name="randomQuestions_quitButtonText">Quit</string>
 
 </resources>

@@ -270,7 +270,7 @@ public class QuestionBank implements Serializable {
                         myRandomAnswers.add(response);
                         // if the myRandomAnswers list is large enough, start using it to generate
                         // random selection for new Clues.
-                        if (myRandomAnswers.size() > GENERATE_RANDOM_AT) {
+                        if (myRandomAnswers.size() > GENERATE_RANDOM_AT && !clue.contains("seen here")) {
                             // get random selections and shuffle it
                             List<String> possible = getRandomSelections(response);
                             Collections.shuffle(possible);

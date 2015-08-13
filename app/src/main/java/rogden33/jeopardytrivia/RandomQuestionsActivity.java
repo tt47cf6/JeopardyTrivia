@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import rogden33.jeopardytrivia.model.Clue;
 import rogden33.jeopardytrivia.model.QuestionBank;
 
@@ -70,6 +72,11 @@ public class RandomQuestionsActivity extends ActionBarActivity {
      */
     public static final String BUTTOND_BUNDLE_KEY = "rogden33.RandomQuestions.buttonD";
 
+    public static final String STREAK_BUNDLE_KEY = "rogden33.RandomQuestions.streak";
+    public static final int CORRECT_POINTS = 5;
+    public static final int INCORRECT_POINTS = 1;
+    public static final int STREAK_RESET = 0;
+
     /**
      * A reference to the QuestionBank to get the next random clue from.
      */
@@ -101,6 +108,8 @@ public class RandomQuestionsActivity extends ActionBarActivity {
      */
     private int myScore;
 
+    private int myStreak;
+
     /**
      * Sets up the activity. If the savedInstanceState is not null, the previous state is
      * restored. Otherwise, the TextViews are loaded with the static loading text. Either way,
@@ -124,6 +133,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         Button nextButton = (Button) findViewById(R.id.randomQuestions_Button_next);
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);
         TextView cate = (TextView) findViewById(R.id.randomQuestions_TextView_categoryDisplay);
+        TextView streak = (TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay);
         Button choiceA = (Button) findViewById(R.id.randomQuestions_Button_choiceA);
         Button choiceB = (Button) findViewById(R.id.randomQuestions_Button_choiceB);
         Button choiceC = (Button) findViewById(R.id.randomQuestions_Button_choiceC);
@@ -138,12 +148,14 @@ public class RandomQuestionsActivity extends ActionBarActivity {
             nextButton.setEnabled(false);
             clue.setText(LOADING_TEXT);
             cate.setText(LOADING_TEXT);
+            streak.setText("" + STREAK_RESET);
         } else {
             // restore previous state
             myClue = (Clue) savedInstanceState.getSerializable(MYCLUE_BUNDLE_KEY);
             myQuestionBank = (QuestionBank) savedInstanceState.getSerializable(QUESTIONBANK_BUNDLE_KEY);
             clue.setText(Html.fromHtml(myClue.getClue()));
             cate.setText(Html.fromHtml(myClue.getCategory()));
+            streak.setText(savedInstanceState.getString(STREAK_BUNDLE_KEY));
             choiceA.setText(savedInstanceState.getString(BUTTONA_BUNDLE_KEY));
             choiceB.setText(savedInstanceState.getString(BUTTONB_BUNDLE_KEY));
             choiceC.setText(savedInstanceState.getString(BUTTONC_BUNDLE_KEY));
@@ -159,12 +171,16 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                     if (myClue.getCorrectResponseIndex() == index) {
                         // correct selection
                         Toast.makeText(parent, "Correct! +5 points", Toast.LENGTH_SHORT).show();
-                        myScore += 5;
+                        myScore += CORRECT_POINTS;
+                        myStreak++;
                         nextClue(null);
                     } else {
                         // incorrect selection
                         Toast.makeText(parent, "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
-                        myScore--;
+                        myScore -= INCORRECT_POINTS;
+                        myStreak = STREAK_RESET;
+                        ((TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay)).setText("0");
+                        ((TextView) findViewById(R.id.randomQuestions_TextView_scoreDisplay)).setText("" + myScore);
                     }
                 }
             });
@@ -191,6 +207,8 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 getString(R.string.SHARED_PREFS), MODE_PRIVATE);
         myScore = sharedPreferences.getInt(
                 getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
+        TextView score = (TextView) findViewById(R.id.randomQuestions_TextView_scoreDisplay);
+        score.setText("" + myScore);
     }
 
     /**
@@ -219,6 +237,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         // get refernece to the buttons
+        TextView streak = (TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay);
         Button choiceA = (Button) findViewById(R.id.randomQuestions_Button_choiceA);
         Button choiceB = (Button) findViewById(R.id.randomQuestions_Button_choiceB);
         Button choiceC = (Button) findViewById(R.id.randomQuestions_Button_choiceC);
@@ -230,6 +249,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         outState.putString(BUTTONB_BUNDLE_KEY, choiceB.getText().toString());
         outState.putString(BUTTONC_BUNDLE_KEY, choiceC.getText().toString());
         outState.putString(BUTTOND_BUNDLE_KEY, choiceD.getText().toString());
+        outState.putString(STREAK_BUNDLE_KEY, streak.getText().toString());
     }
 
     /**
@@ -262,14 +282,22 @@ public class RandomQuestionsActivity extends ActionBarActivity {
         // set TextViews
         TextView clue = (TextView) findViewById(R.id.randomQuestions_TextView_clueDisplay);
         TextView cate = (TextView) findViewById(R.id.randomQuestions_TextView_categoryDisplay);
+        TextView score = (TextView) findViewById(R.id.randomQuestions_TextView_scoreDisplay);
+        TextView streak = (TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay);
         clue.setText(Html.fromHtml(next.getClue()));
         cate.setText(Html.fromHtml(next.getCategory()));
+        score.setText("" + myScore);
+        streak.setText("" + myStreak);
         // set Buttons
         String[] possibleAnswers = next.getSelectableAnswers();
         for (int i = 0; i < myAnswerButtons.length; i++) {
             myAnswerButtons[i].setText(Html.fromHtml(possibleAnswers[i]));
         }
 
+    }
+
+    public void quit(View v) {
+        finish();
     }
 
 
