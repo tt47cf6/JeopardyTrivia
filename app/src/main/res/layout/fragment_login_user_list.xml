@@ -12,7 +12,8 @@
         android:id="@+id/login_Button_newUserButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_register_button_text"/>
+        android:text="@string/login_register_button_text"
+        android:background="@drawable/default_button_theme"/>
 
     <!-- Static text to prompt the user to register or login  -->
     <TextView

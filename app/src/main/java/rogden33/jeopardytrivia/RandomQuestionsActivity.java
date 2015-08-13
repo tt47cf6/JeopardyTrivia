@@ -173,13 +173,13 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     if (myClue.getCorrectResponseIndex() == index) {
                         // correct selection
-                        Toast.makeText(parent, "Correct! +5 points", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parent.getApplicationContext(), "Correct! +5 points", Toast.LENGTH_SHORT).show();
                         myScore += CORRECT_POINTS;
                         myStreak++;
                         nextClue(null);
                     } else {
                         // incorrect selection
-                        Toast.makeText(parent, "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parent.getApplicationContext(), "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
                         myScore -= INCORRECT_POINTS;
                         myStreak = STREAK_RESET;
                         ((TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay)).setText("0");

@@ -130,28 +130,40 @@
                 android:id="@+id/randomQuestions_Button_choiceA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/default_button_theme"
+                android:layout_margin="5dp"
+                android:textAllCaps="false"/>
 
             <!-- Choice B -->
             <Button
                 android:id="@+id/randomQuestions_Button_choiceB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/default_button_theme"
+                android:layout_margin="5dp"
+                android:textAllCaps="false"/>
 
             <!-- Choice C -->
             <Button
                 android:id="@+id/randomQuestions_Button_choiceC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/default_button_theme"
+                android:layout_margin="5dp"
+                android:textAllCaps="false"/>
 
             <!-- Choice D -->
             <Button
                 android:id="@+id/randomQuestions_Button_choiceD"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/default_button_theme"
+                android:layout_margin="5dp"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 
@@ -172,7 +184,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/randomQuestions_quitButtonText"
-            android:onClick="quit"/>
+            android:onClick="quit"
+            android:background="@drawable/default_button_theme"
+            android:layout_margin="5dp"/>
 
         <!-- Next button -->
         <Button
@@ -181,7 +195,10 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:onClick="nextClue"
-            android:text="@string/randomQuestions_nextButtonText" />
+            android:text="@string/randomQuestions_nextButtonText"
+            android:background="@drawable/default_button_theme"
+            android:layout_margin="5dp"
+            />
 
     </LinearLayout>
 

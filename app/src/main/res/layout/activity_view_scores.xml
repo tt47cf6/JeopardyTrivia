@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="share"
-        android:text="@string/viewScore_shareButton"/>
+        android:text="@string/viewScore_shareButton"
+        android:background="@drawable/default_button_theme"/>
 
 </LinearLayout>

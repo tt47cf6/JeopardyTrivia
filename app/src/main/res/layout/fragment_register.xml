@@ -29,7 +29,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:inputType="text"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#ffdac863"
+            android:textColorHint="#ffdac863"/>
 
     </LinearLayout>
 
@@ -50,7 +52,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="numberPassword"/>
+            android:inputType="numberPassword"
+            android:textColor="#ffdac863"
+            android:textColorHint="#ffdac863"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,7 +74,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="numberPassword"/>
+            android:inputType="numberPassword"
+            android:textColor="#ffdac863"
+            android:textColorHint="#ffdac863"/>
     </LinearLayout>
 
     <!-- Submit button -->
@@ -79,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/login_register_submitButtonText"/>
+        android:text="@string/login_register_submitButtonText"
+        android:background="@drawable/default_button_theme"/>
 
 </LinearLayout>

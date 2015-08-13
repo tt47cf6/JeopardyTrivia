@@ -18,7 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/login_loginAttempt_pinHint"
-        android:inputType="numberPassword"/>
+        android:inputType="numberPassword"
+        android:textColor="#ffdac863"
+        android:textColorHint="#ffdac863"/>
 
     <!-- Login button -->
     <Button
@@ -26,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/login_loginAttempt_loginButtonText"/>
+        android:text="@string/login_loginAttempt_loginButtonText"
+        android:background="@drawable/default_button_theme"/>
 
 </LinearLayout>

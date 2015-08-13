@@ -62,7 +62,7 @@ public class LoginAttemptFragment extends Fragment {
                 // get pin
                 EditText pinEntry = (EditText) getActivity().findViewById(R.id.login_EditText_loginAttempt_pinEntry);
                 if (pinEntry.getText() == null || pinEntry.getText().toString().length() == 0) {
-                    Toast.makeText(getActivity(), "Enter your pin", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Enter your pin", Toast.LENGTH_LONG).show();
                     return;
                 }
                 String pin = pinEntry.getText().toString();
@@ -71,14 +71,14 @@ public class LoginAttemptFragment extends Fragment {
                 db.closeDB();
                 if (authenticatedUser == null) {
                     // not authenticated
-                    Toast.makeText(getActivity(), "Could not authenticate", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Could not authenticate", Toast.LENGTH_LONG).show();
                 } else {
                     // authentication successful, intent to MainMenu
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
                     // pass username as an extra
                     intent.putExtra(MainMenuActivity.USER_EXTRA_ID, authenticatedUser);
                     startActivity(intent);
-                    Toast.makeText(getActivity(), "Welcome, " + username, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Welcome, " + username, Toast.LENGTH_SHORT).show();
                     // finish this activity
                     getActivity().finish();
                 }

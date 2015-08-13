@@ -24,13 +24,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mainMenu_ButtonText_toRandomQuestions"
-        android:onClick="randomOnClick"/>
+        android:onClick="randomOnClick"
+        android:background="@drawable/default_button_theme"
+        android:layout_margin="5dp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/mainMenu_ButtonText_toViewScores"
-        android:onClick="viewScoreOnClick"/>
+        android:onClick="viewScoreOnClick"
+        android:background="@drawable/default_button_theme"
+        android:layout_margin="5dp"/>
 
 
 </LinearLayout>
