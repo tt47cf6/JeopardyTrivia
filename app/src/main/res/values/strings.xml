@@ -41,5 +41,8 @@
     <string name="viewScores_topLabel">Top 25 Users By Score</string>
     <string name="viewScore_shareButton">Share</string>
     <string name="mainMenu_ButtonText_toViewScores">View Top Scores</string>
+    <string name="viewScores_shareWith">Share with...</string>
+    <string name="viewScore_staticShareText">Check out my score in Jeopardy Trivia!:</string>
+    <string name="viewScore_staticHighScoreShareText">Check out my top score in Jeopardy Trivia!:</string>
 
 </resources>

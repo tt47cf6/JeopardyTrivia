@@ -1,6 +1,7 @@
 package rogden33.jeopardytrivia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -26,16 +27,28 @@ public class ViewScores extends ActionBarActivity {
     public static final int NUMBER_OF_SCORES = 25;
     public static final String USERNAME_EXTRA_KEY = "rogden33.viewScores.usernameExtraKey";
 
+    private List<UserScorePair> myList;
+
+    private String myUsername;
+
+    private int myScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_scores);
 
-        List<UserScorePair> pairs = getUsers();
+        myList = getUsers();
         ListView scoreList = (ListView)
                 findViewById(R.id.viewScores_ListView_scoreListDisplay);
-        UserScorePairAdapter adapter = new UserScorePairAdapter(this, pairs);
+        UserScorePairAdapter adapter = new UserScorePairAdapter(this, myList);
         scoreList.setAdapter(adapter);
+
+        myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.SHARED_PREFS), MODE_PRIVATE);
+        myScore = sharedPreferences.getInt(
+                    getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
     }
 
     @Override
@@ -45,23 +58,16 @@ public class ViewScores extends ActionBarActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void share(View v) {
-
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        if (myList.get(0).myScore == this.myScore) {
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.viewScore_staticHighScoreShareText) + myScore);
+        } else {
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.viewScore_staticShareText) + myScore);
+        }
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.viewScores_shareWith)));
     }
 
     private List<UserScorePair> getUsers() {
