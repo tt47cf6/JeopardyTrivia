@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_welcome_image_landscape"
+        android:adjustViewBounds="true"/>
+
+    <!-- Fragment container -->
+    <FrameLayout
+        android:id="@+id/login_frameLayout_fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>
