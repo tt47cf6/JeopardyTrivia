@@ -3,6 +3,7 @@ package rogden33.jeopardytrivia;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -121,6 +122,8 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         // get username extra
         myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
         // set content view based on current orientation

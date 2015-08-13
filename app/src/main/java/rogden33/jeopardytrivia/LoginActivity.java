@@ -1,11 +1,14 @@
 package rogden33.jeopardytrivia;
 
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.Window;
 
 /**
  * This is the starting Activity where a user logs in. All of th functionality of this class is
@@ -21,6 +24,8 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_login);
         } else {

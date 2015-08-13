@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+            android:theme="@style/Theme.AppCompat">
         <activity
             android:name=".MainMenuActivity"
             android:label="@string/mainMenu_activityTitle" />

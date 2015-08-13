@@ -22,7 +22,7 @@
     <string name="login_register_submitButtonText">Submit</string>
 
     <!-- MAIN MENU ACTIVITY ITEMS -->
-    <string name="mainMenu_activityTitle">MainMenuActivity</string>
+    <string name="mainMenu_activityTitle">Main Menu</string>
     <string name="MainMenu_SharedPref_Score_Prefix">rogden33.jeopardyTrivia.sharedPreferences.mainMenu.highScore.user=</string>
     <string name="mainMenu_ButtonText_toRandomQuestions">Random Questions</string>
     <string name="mainMenu_menuItem_deleteUserText">Delete User</string>
@@ -37,12 +37,11 @@
     <string name="randomQuestions_quitButtonText">Quit</string>
     <string name="title_activity_view_scores">ViewScores</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="viewScores_topLabel">Top 25 Users By Score</string>
     <string name="viewScore_shareButton">Share</string>
     <string name="mainMenu_ButtonText_toViewScores">View Top Scores</string>
-    <string name="viewScores_shareWith">Share with...</string>
-    <string name="viewScore_staticShareText">Check out my score in Jeopardy Trivia!:</string>
-    <string name="viewScore_staticHighScoreShareText">Check out my top score in Jeopardy Trivia!:</string>
+    <string name="viewScores_shareWith">Share with</string>
+    <string name="viewScore_staticShareText">Check out my score in Jeopardy Trivia!: </string>
+    <string name="viewScore_staticHighScoreShareText">Check out my top score in Jeopardy Trivia!: </string>
 
 </resources>

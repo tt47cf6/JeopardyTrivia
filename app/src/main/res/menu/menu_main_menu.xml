@@ -8,5 +8,5 @@
         android:id="@+id/mainMenu_MenuItem_deleteUser"
         android:title="@string/mainMenu_menuItem_deleteUserText"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>
