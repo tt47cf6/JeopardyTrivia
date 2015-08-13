@@ -1,6 +1,7 @@
 package rogden33.jeopardytrivia;
 
 
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -20,7 +21,11 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.activity_login);
+        } else {
+            setContentView(R.layout.activity_login_landscape);
+        }
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
         trans.add(R.id.login_frameLayout_fragmentContainer, new LoginUserListFragment());
         trans.commit();

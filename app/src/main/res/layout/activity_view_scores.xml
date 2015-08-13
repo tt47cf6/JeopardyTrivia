@@ -7,13 +7,11 @@
     android:orientation="vertical"
     tools:context="rogden33.jeopardytrivia.ViewScores">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:text="@string/viewScores_topLabel"/>
+        android:src="@drawable/viewscores_topscores_image"
+        android:adjustViewBounds="true"/>
 
     <ListView
         android:id="@+id/viewScores_ListView_scoreListDisplay"
