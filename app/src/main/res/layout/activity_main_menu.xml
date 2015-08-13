@@ -26,4 +26,11 @@
         android:text="@string/mainMenu_ButtonText_toRandomQuestions"
         android:onClick="randomOnClick"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mainMenu_ButtonText_toViewScores"
+        android:onClick="viewScoreOnClick"/>
+
+
 </LinearLayout>

@@ -130,4 +130,10 @@ public class MainMenuActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void viewScoreOnClick(View v) {
+        Intent intent = new Intent(this, ViewScores.class);
+        intent.putExtra(ViewScores.USERNAME_EXTRA_KEY, myUsername);
+        startActivity(intent);
+    }
+
 }

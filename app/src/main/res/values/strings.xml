@@ -35,5 +35,11 @@
     <string name="randomQuestions_scoreLabel">Score</string>
     <string name="randomQuestions_streakLabel">Streak</string>
     <string name="randomQuestions_quitButtonText">Quit</string>
+    <string name="title_activity_view_scores">ViewScores</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="viewScores_topLabel">Top 25 Users By Score</string>
+    <string name="viewScore_shareButton">Share</string>
+    <string name="mainMenu_ButtonText_toViewScores">View Top Scores</string>
 
 </resources>
