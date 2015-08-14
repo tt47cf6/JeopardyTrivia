@@ -1,7 +1,6 @@
 package rogden33.jeopardytrivia.model;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -190,7 +189,7 @@ public class GameBoard {
                     return index;
                 }
             }
-            myCategories[index] = categroyTitle;
+            myCategories[index] = categroyTitle.toUpperCase();
             return index + 1;
         }
 
