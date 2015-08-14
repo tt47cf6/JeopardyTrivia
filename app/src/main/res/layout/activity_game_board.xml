@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/gameBoard_TextView_category0"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/gameBoard_TextView_category1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/gameBoard_TextView_category2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/gameBoard_TextView_category3"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/gameBoard_TextView_category4"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
