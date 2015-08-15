@@ -82,7 +82,7 @@ public class GameBoardActivity extends ActionBarActivity {
                 getString(R.string.SHARED_PREFS), MODE_PRIVATE);
         myScore = sharedPreferences.getInt(
                 getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
-        TextView scoreView = (TextView) findViewById(R.id.singleClue_TextView_scoreDisplay);
+        TextView scoreView = (TextView) findViewById(R.id.gameBoard_TextView_scoreDisplay);
         scoreView.setText("" + myScore);
     }
 
@@ -103,21 +103,33 @@ public class GameBoardActivity extends ActionBarActivity {
             TextView categoryDisplay = (TextView) findViewById(catID);
             categoryDisplay.setText(myCategories[cat]);
             for (int row = 0; row < PRIZES.length; row++) {
+                final int rowF = row;
+                final int catF = cat;
                 String name = String.format("gameBoard_Button_row%d_col%d", row, cat);
                 int id = getResources().getIdentifier(name, "id", getPackageName());
                 final Button button = (Button) findViewById(id);
-                button.setText("$" + (PRIZES[row]));
-                final Context parent = this;
                 final Clue clue = myClues[row][cat];
-                button.setOnClickListener(new Button.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(parent, SingleClueActivity.class);
-                        intent.putExtra(SingleClueActivity.CLUE_EXTRA_KEY, clue);
-                        startActivity(intent);
-                        button.setEnabled(false);
-                    }
-                });
+                if (clue == null) {
+                    button.setText("");
+                    button.setEnabled(false);
+                } else {
+                    button.setText("$" + (PRIZES[row]));
+                    final Context parent = this;
+                    final int prizeValue = PRIZES[row];
+                    button.setOnClickListener(new Button.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(parent, SingleClueActivity.class);
+                            intent.putExtra(SingleClueActivity.CLUE_EXTRA_KEY, clue);
+                            intent.putExtra(SingleClueActivity.PRIZE_VALUE_EXTRA_KEY, prizeValue);
+                            intent.putExtra(SingleClueActivity.USERNAME_EXTRA_KEY, myUsername);
+                            startActivity(intent);
+                            button.setEnabled(false);
+                            button.setText("");
+                            myClues[rowF][catF] = null;
+                        }
+                    });
+                }
             }
         }
     }

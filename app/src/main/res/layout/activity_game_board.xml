@@ -367,7 +367,7 @@
             android:text="@string/singleClue_scoreLabel"/>
 
         <TextView
-            android:id="@+id/singleClue_TextView_scoreDisplay"
+            android:id="@+id/gameBoard_TextView_scoreDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp" />

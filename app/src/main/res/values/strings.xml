@@ -50,7 +50,8 @@
     <string name="title_activity_single_clue">SingleClueActivity</string>
     <string name="singleClue_categoryLabel">CATEGORY</string>
     <string name="singleClue_clueLabel">CLUE</string>
-    <string name="singleClue_scoreLabel">Your Score:</string>
+    <string name="singleClue_scoreLabel">Your Score: </string>
+    <string name="singleClue_prizeLabel">Clue Value: </string>
 
 
 </resources>
