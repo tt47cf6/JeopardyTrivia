@@ -47,6 +47,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="mainMenu_ButtonText_toGameBoard">Play with Jeopardy Board</string>
+    <string name="title_activity_single_clue">SingleClueActivity</string>
+    <string name="singleClue_categoryLabel">CATEGORY</string>
+    <string name="singleClue_clueLabel">CLUE</string>
+    <string name="singleClue_scoreLabel">Your Score:</string>
 
 
 </resources>

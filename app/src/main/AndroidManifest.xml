@@ -34,6 +34,10 @@
             android:name=".GameBoardActivity"
             android:label="@string/title_activity_game_board" >
         </activity>
+        <activity
+            android:name=".SingleClueActivity"
+            android:label="@string/title_activity_single_clue" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,12 +1,18 @@
 package rogden33.jeopardytrivia;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import rogden33.jeopardytrivia.model.Clue;
 import rogden33.jeopardytrivia.model.GameBoard;
@@ -23,12 +29,17 @@ public class GameBoardActivity extends ActionBarActivity {
     private static final String BUNDLE_CLUES_KEY = "rogden33.GameBoardActivity.myClues";
 
     private static final String BUNDLE_DISPLAY_FLAG_KEY = "rogden33.GameBoardActivity.myDisplayFlag";
+    public static final String USERNAME_EXTRA_KEY = "rogden33.GameBoardActivity.usernameExtraKey";
 
     private String[] myCategories;
 
     private Clue[][] myClues;
 
     private boolean myDisplayFlag;
+
+    private String myUsername;
+
+    private int myScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +49,7 @@ public class GameBoardActivity extends ActionBarActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
+        myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             Toast.makeText(getApplicationContext(), "You are encouraged to switch to landscape orientation", Toast.LENGTH_LONG).show();
         }
@@ -63,6 +75,17 @@ public class GameBoardActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.SHARED_PREFS), MODE_PRIVATE);
+        myScore = sharedPreferences.getInt(
+                getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername, 0);
+        TextView scoreView = (TextView) findViewById(R.id.singleClue_TextView_scoreDisplay);
+        scoreView.setText("" + myScore);
+    }
+
     public void display(GameBoard board) {
         myCategories = board.getCategories();
         for(int cat = 0; cat < NUM_OF_CATEGORIES; cat++) {
@@ -82,11 +105,21 @@ public class GameBoardActivity extends ActionBarActivity {
             for (int row = 0; row < PRIZES.length; row++) {
                 String name = String.format("gameBoard_Button_row%d_col%d", row, cat);
                 int id = getResources().getIdentifier(name, "id", getPackageName());
-                Button button = (Button) findViewById(id);
+                final Button button = (Button) findViewById(id);
                 button.setText("$" + (PRIZES[row]));
+                final Context parent = this;
+                final Clue clue = myClues[row][cat];
+                button.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(parent, SingleClueActivity.class);
+                        intent.putExtra(SingleClueActivity.CLUE_EXTRA_KEY, clue);
+                        startActivity(intent);
+                        button.setEnabled(false);
+                    }
+                });
             }
         }
     }
-
 
 }

@@ -138,7 +138,7 @@ public class MainMenuActivity extends ActionBarActivity {
 
     public void gameBoardOnClick(View view) {
         Intent intent = new Intent(this, GameBoardActivity.class);
-//        intent.putExtra(ViewScores.USERNAME_EXTRA_KEY, myUsername);
+        intent.putExtra(GameBoardActivity.USERNAME_EXTRA_KEY, myUsername);
         startActivity(intent);
     }
 }
