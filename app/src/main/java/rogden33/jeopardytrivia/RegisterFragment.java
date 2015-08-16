@@ -80,7 +80,7 @@ public class RegisterFragment extends Fragment {
                 List<String> existingUsers = db.getAllUsernames();
                 boolean contains = false;
                 for (String user : existingUsers) {
-                    contains |= user.equals(username);
+                    contains |= user.equalsIgnoreCase(username);
                 }
                 if (contains) {
                     Toast.makeText(getActivity().getApplicationContext(), "This username already exists!", Toast.LENGTH_LONG).show();

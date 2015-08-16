@@ -4,8 +4,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:background">#ff3f48cc</item>
         <item name="android:textColor">#ffdac863</item>
-        <item name="android:editTextColor">#ff000000</item>
-
     </style>
 
 </resources>

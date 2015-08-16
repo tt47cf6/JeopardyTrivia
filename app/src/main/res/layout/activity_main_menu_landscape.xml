@@ -1,11 +1,7 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:orientation="vertical"
-    tools:context="rogden33.jeopardytrivia.MainMenuActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,9 +17,7 @@
         android:text="@string/mainMenu_ButtonText_toRandomQuestions"
         android:onClick="randomOnClick"
         android:background="@drawable/default_button_theme"
-        android:layout_margin="5dp"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp"/>
+        android:layout_margin="5dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -31,9 +25,7 @@
         android:text="@string/mainMenu_ButtonText_toViewScores"
         android:onClick="viewScoreOnClick"
         android:background="@drawable/default_button_theme"
-        android:layout_margin="5dp"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp"/>
+        android:layout_margin="5dp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -41,9 +33,7 @@
         android:text="@string/mainMenu_ButtonText_toGameBoard"
         android:onClick="gameBoardOnClick"
         android:background="@drawable/default_button_theme"
-        android:layout_margin="5dp"
-        android:paddingBottom="30dp"
-        android:paddingTop="30dp"/>
+        android:layout_margin="5dp"/>
 
     <!-- Show the username -->
     <TextView
@@ -52,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:paddingTop="10dp"/>
+        android:paddingTop="5dp"/>
 
     <!-- Show the current score -->
     <TextView
@@ -61,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:paddingTop="10dp"/>
+        android:paddingTop="5dp"/>
 
     <View
         android:layout_width="wrap_content"
@@ -76,5 +66,4 @@
         android:text="@string/mainMenu_menuItem_deleteUserText"
         android:background="@drawable/default_button_theme"
         android:layout_margin="5dp"/>
-
 </LinearLayout>

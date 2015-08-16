@@ -1,10 +1,18 @@
 package rogden33.jeopardytrivia;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,12 +36,12 @@ public class MainMenuActivity extends ActionBarActivity {
     /**
      * The username of the current user.
      */
-    public String myUsername;
+    private String myUsername;
 
     /**
      * The current score of the current user.
      */
-    public int myScore;
+    private int myScore;
 
     /**
      * Sets the content view and grabs the username String extra.
@@ -43,7 +51,15 @@ public class MainMenuActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.activity_main_menu);
+        } else {
+            setContentView(R.layout.activity_main_menu_landscape);
+        }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         // get uername extra
         String username = getIntent().getStringExtra(USER_EXTRA_ID);
         myUsername = username;
@@ -55,8 +71,18 @@ public class MainMenuActivity extends ActionBarActivity {
     public void showUser() {
         TextView usernameDisplay = (TextView) findViewById(R.id.mainMenu_TextView_username);
         TextView highscoreDisplay = (TextView) findViewById(R.id.mainMenu_TextView_score);
-        usernameDisplay.setText("Username: " + myUsername);
-        highscoreDisplay.setText("Score: " + myScore);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            usernameDisplay.setText("USERNAME\n" + myUsername);
+            highscoreDisplay.setText("SCORE\n$" + myScore);
+        } else {
+            usernameDisplay.setText("USERNAME: " + myUsername);
+            highscoreDisplay.setText("SCORE: $" + myScore);
+        }
+
+    }
+
+    public String getUsername() {
+        return myUsername;
     }
 
     /**
@@ -76,46 +102,9 @@ public class MainMenuActivity extends ActionBarActivity {
         showUser();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
-        return true;
-    }
-
-    /**
-     * When a menu item is clicked, check if it is the delete user menu item. If so, delete
-     * this user from the SQLiteDB and finish this activity. The user's score is also deleted.
-     *
-     * @param item the menu item that was clicked
-     * @return {@inheritDoc}
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.mainMenu_MenuItem_deleteUser) {
-            // delete user from SQLite
-            UsersDB db = new UsersDB(this);
-            db.deleteUser(myUsername);
-            db.closeDB();
-            // remove SharedPref entry
-            SharedPreferences sharedPreferences =
-                    getSharedPreferences(
-                            getString(R.string.SHARED_PREFS),
-                            Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.remove(getString(R.string.MainMenu_SharedPref_Score_Prefix) + myUsername);
-            editor.apply();
-            // return to login activity
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            // finish the current activity
-            finish();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void deleteUser(View v) {
+        ConfirmUserDeleteFragment dialog = new ConfirmUserDeleteFragment();
+        dialog.show(getFragmentManager(), "confirmDelete" );
     }
 
     /**
@@ -143,10 +132,5 @@ public class MainMenuActivity extends ActionBarActivity {
     }
 
 
-    public void finalOnClick(View v) {
-        Intent intent = new Intent(this, FinalJeopardyActivity.class);
-        intent.putExtra(FinalJeopardyActivity.USERNAME_BUNDLE_KEY, myUsername);
-        intent.putExtra(FinalJeopardyActivity.SCORE_BUNDLE_KEY, myScore);
-        startActivity(intent);
-    }
+
 }
