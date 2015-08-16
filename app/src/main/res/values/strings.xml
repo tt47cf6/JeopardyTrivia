@@ -52,6 +52,14 @@
     <string name="singleClue_clueLabel">CLUE</string>
     <string name="singleClue_scoreLabel">Your Score: </string>
     <string name="singleClue_prizeLabel">Clue Value: </string>
+    <string name="gameBoard_title_loadingText">Loading</string>
+    <string name="title_activity_final_jeopardy">FinalJeopardyActivity</string>
+    <string name="finalJeopardy_categoryLabel">CATEGORY</string>
+    <string name="finalJeopardy_wagerPrompt">What is your wager?</string>
+    <string name="finalJeopardy_wagerHint">Wager from $0 up to your total</string>
+    <string name="finalJeopardy__scoreLabel">Your Score: </string>
+    <string name="finalJeopardy_submitButtonLabel">Submit</string>
+    <string name="finalJeopardy_title">Final Jeopardy!</string>
 
 
 </resources>

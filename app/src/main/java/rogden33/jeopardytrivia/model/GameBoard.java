@@ -71,29 +71,27 @@ public class GameBoard {
         int correctIndex = -1;
         String category = myCategories[cat];
         List<String> responses = getPossibleAnswers(row, cat);
-        String correct = responses.get(0);
         Collections.shuffle(responses);
         for (int i = 0; i < SELECTABLE_RESPONSES; i++) {
             String resp = responses.get(i);
-            if (resp.equals(correct)) {
+            if (resp.equals(myCorrectResponses[row][cat])) {
                 correctIndex = i;
             }
             possible[i] = responses.get(i);
         }
-        return new Clue(clue, correct, category, "", 0, possible, correctIndex);
+        return new Clue(clue, myCorrectResponses[row][cat], category, "", 0, possible, correctIndex);
     }
 
     private List<String> getPossibleAnswers(int row, int cat) {
         Set<String> possible = new HashSet<String>();
-        while (possible.size() < SELECTABLE_RESPONSES - 1) {
+        possible.add(myCorrectResponses[row][cat]);
+        while (possible.size() < SELECTABLE_RESPONSES) {
             int randRow = myRandom.nextInt(myNumberOfRows);
             if (randRow != row) {
                 possible.add(myCorrectResponses[randRow][cat]);
             }
         }
-        List<String> result = new ArrayList<String>(possible);
-        result.add(0, myCorrectResponses[row][cat]);
-        return result;
+        return new ArrayList<String>(possible);
     }
 
     public void requestBoard() {
@@ -180,6 +178,9 @@ public class GameBoard {
                     JSONObject jsonObject = (JSONObject) cluesArray.get(i);
                     String response = jsonObject.getString("answer");
                     String clue = jsonObject.getString("question");
+                    if (response == null || clue == null || response.length() == 0 || clue.length() == 0) {
+                        return index;
+                    }
                     if (i < myNumberOfRows) {
                         setClueResponse(i, index, clue, response);
                     } else {

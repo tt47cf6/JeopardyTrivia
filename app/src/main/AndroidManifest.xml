@@ -38,6 +38,10 @@
             android:name=".SingleClueActivity"
             android:label="@string/title_activity_single_clue" >
         </activity>
+        <activity
+            android:name=".FinalJeopardyActivity"
+            android:label="@string/title_activity_final_jeopardy" >
+        </activity>
     </application>
 
 </manifest>

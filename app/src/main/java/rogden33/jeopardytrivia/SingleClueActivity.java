@@ -103,8 +103,8 @@ public class SingleClueActivity extends ActionBarActivity {
         TextView score = (TextView) findViewById(R.id.singleClue_TextView_scoreDisplay);
         category.setText(Html.fromHtml(myClue.getCategory()));
         clue.setText(Html.fromHtml(myClue.getClue()));
-        prize.setText("" + myPrizeValue);
-        score.setText("" + myScore);
+        prize.setText(" $" + myPrizeValue);
+        score.setText(" $" + myScore);
         Button[] buttons = new Button[] {buttonA, buttonB, buttonC, buttonD};
         String[] possible = myClue.getSelectableAnswers();
         for (int i = 0; i < buttons.length; i++) {

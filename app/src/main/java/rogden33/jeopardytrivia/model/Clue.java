@@ -56,13 +56,16 @@ public class Clue implements Serializable, Comparable<Clue> {
      * @param correctIndex the index of the correct response in the possible selections
      */
     public Clue(String clue, String response, String category, String id, int difficulty, String[] possible, int correctIndex) {
-        myClue = clue;
-        myResponse = response;
-        myCategory = category;
+        myClue = clue.replace("\\", "");
+        myResponse = response.replace("\\", "");
+        myCategory = category.replace("\\", "");
         myID = id;
         myDifficulty = difficulty;
         mySelectableAnswers = possible.clone();
         myCorrectResponseIndex = correctIndex;
+        for (int i = 0; i < mySelectableAnswers.length; i++) {
+            mySelectableAnswers[i] = mySelectableAnswers[i].replace("\\", "");
+        }
     }
 
     /**

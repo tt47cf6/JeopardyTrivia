@@ -71,8 +71,8 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     public static final String BUTTOND_BUNDLE_KEY = "rogden33.RandomQuestions.buttonD";
 
     public static final String STREAK_BUNDLE_KEY = "rogden33.RandomQuestions.streak";
-    public static final int CORRECT_POINTS = 5;
-    public static final int INCORRECT_POINTS = 1;
+    public static final int CORRECT_POINTS = 200;
+    public static final int INCORRECT_POINTS = 150;
     public static final int STREAK_RESET = 0;
 
     /**
@@ -170,13 +170,13 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 public void onClick(View v) {
                     if (myClue.getCorrectResponseIndex() == index) {
                         // correct selection
-                        Toast.makeText(parent.getApplicationContext(), "Correct! +5 points", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parent.getApplicationContext(), "Correct! +" + CORRECT_POINTS + " points", Toast.LENGTH_SHORT).show();
                         myScore += CORRECT_POINTS;
                         myStreak++;
                         nextClue(null);
                     } else {
                         // incorrect selection
-                        Toast.makeText(parent.getApplicationContext(), "Incorrect. -1 point", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(parent.getApplicationContext(), "Incorrect. -" + INCORRECT_POINTS + " points", Toast.LENGTH_SHORT).show();
                         myScore -= INCORRECT_POINTS;
                         myStreak = STREAK_RESET;
                         ((TextView) findViewById(R.id.randomQuestions_TextView_streakDisplay)).setText("0");

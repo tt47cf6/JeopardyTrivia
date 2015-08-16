@@ -141,4 +141,12 @@ public class MainMenuActivity extends ActionBarActivity {
         intent.putExtra(GameBoardActivity.USERNAME_EXTRA_KEY, myUsername);
         startActivity(intent);
     }
+
+
+    public void finalOnClick(View v) {
+        Intent intent = new Intent(this, FinalJeopardyActivity.class);
+        intent.putExtra(FinalJeopardyActivity.USERNAME_BUNDLE_KEY, myUsername);
+        intent.putExtra(FinalJeopardyActivity.SCORE_BUNDLE_KEY, myScore);
+        startActivity(intent);
+    }
 }
