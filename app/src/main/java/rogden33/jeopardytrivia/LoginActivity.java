@@ -36,13 +36,4 @@ public class LoginActivity extends ActionBarActivity {
         trans.commit();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_login, menu);
-        return true;
-    }
-
 }

@@ -103,16 +103,16 @@ public class FinalJeopardyActivity extends ActionBarActivity {
         EditText wagerEntry = (EditText) findViewById(R.id.finalJeopardy_EditText_wagerEntry);
         Editable entry = wagerEntry.getText();
         if (entry == null || entry.toString().length() == 0) {
-            Toast.makeText(getApplicationContext(), "Enter a wager", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.finalJeopardy_toast_noWagerEntry), Toast.LENGTH_SHORT).show();
             return;
         }
         int wager = Integer.parseInt(entry.toString());
         if (wager > myScore || wager < 0) {
-            Toast.makeText(getApplicationContext(), "Wager cannot be less than zero or greater than your score", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.finalJeopardy_toast_highWagerEntry), Toast.LENGTH_SHORT).show();
             return;
         }
         if (!myReadyFlag) {
-            Toast.makeText(getApplicationContext(), "Clue is not ready yet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.finalJeopardy_toast_clueNotDownloaded), Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent = new Intent(this, SingleClueActivity.class);
@@ -229,9 +229,7 @@ public class FinalJeopardyActivity extends ActionBarActivity {
                     if (!jsonObject.has("answer") || !jsonObject.has("question")) {
                         return index;
                     }
-                    Log.i("DEBUG JSON OBJ", jsonObject.toString());
                     String response = jsonObject.getString("answer");
-                    Log.i("DEBUG response", response);
                     String clue = jsonObject.getString("question");
                     if (response == null || clue == null) {
                         return index;

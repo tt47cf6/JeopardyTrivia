@@ -108,10 +108,6 @@ public class ViewScores extends ActionBarActivity {
             return other.myScore - myScore;
         }
 
-        @Override
-        public String toString() {
-            return String.format("Score: %d | %s", myScore, myUser);
-        }
     }
 
     private class UserScorePairAdapter extends ArrayAdapter<UserScorePair> {
@@ -128,7 +124,7 @@ public class ViewScores extends ActionBarActivity {
             TextView name = (TextView) result.findViewById(R.id.viewScore_TextView_itemLayout_username);
             TextView score = (TextView) result.findViewById(R.id.viewScore_TextView_itemLayout_score);
             name.setText(pair.myUser);
-            score.setText("" + pair.myScore);
+            score.setText("$" + pair.myScore);
             return result;
         }
     }

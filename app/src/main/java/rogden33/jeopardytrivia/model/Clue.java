@@ -56,6 +56,7 @@ public class Clue implements Serializable, Comparable<Clue> {
      * @param correctIndex the index of the correct response in the possible selections
      */
     public Clue(String clue, String response, String category, String id, int difficulty, String[] possible, int correctIndex) {
+        // ' are escaped in the web service, so take out the escapes here
         myClue = clue.replace("\\", "");
         myResponse = response.replace("\\", "");
         myCategory = category.replace("\\", "");

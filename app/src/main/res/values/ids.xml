@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="confirmDelete_confirmationPrompt" type="id">Are you sure you want to delete this
+        user?
+    </item>
+</resources>

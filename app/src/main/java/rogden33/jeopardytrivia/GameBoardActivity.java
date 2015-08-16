@@ -71,7 +71,7 @@ public class GameBoardActivity extends ActionBarActivity {
         }
         myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(getApplicationContext(), "You are encouraged to switch to landscape orientation", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.gameBoard_toast_switchToLandscape), Toast.LENGTH_LONG).show();
         }
         if (savedInstanceState == null) {
             new GameBoard(this, PRIZES.length, NUM_OF_CATEGORIES).requestBoard();
@@ -93,7 +93,6 @@ public class GameBoardActivity extends ActionBarActivity {
                 myDailyDoubles[i] = p;
                 i++;
             }
-            Log.i("DEBUG", Arrays.toString(myDailyDoubles));
         } else {
             myClues = (Clue[][]) savedInstanceState.getSerializable(BUNDLE_CLUES_KEY);
             myCategories = savedInstanceState.getStringArray(BUNDLE_CATEGORIES_KEY);
@@ -103,9 +102,9 @@ public class GameBoardActivity extends ActionBarActivity {
             myDailyDoubles = (GameBoardLocation[]) savedInstanceState.getSerializable(DAILY_DOUBLES_KEY);
             TextView title = (TextView) findViewById(R.id.gameBoard_TextView_titleDisplay);
             if (myLevel == 1) {
-                title.setText("Single Jeopardy!");
+                title.setText(getString(R.string.gameBoard_singleJeopardyTitle));
             } else if (myLevel == 2) {
-                title.setText("Double Jeopardy!");
+                title.setText(getString(R.string.gameBoard_doubleJeopardyTitle));
             }
             populateBoard();
         }
@@ -149,9 +148,9 @@ public class GameBoardActivity extends ActionBarActivity {
         myDisplayFlag = true;
         TextView title = (TextView) findViewById(R.id.gameBoard_TextView_titleDisplay);
         if (myLevel == 1) {
-            title.setText("Single Jeopardy!");
+            title.setText(getString(R.string.gameBoard_singleJeopardyTitle));
         } else if (myLevel == 2) {
-            title.setText("Double Jeopardy!");
+            title.setText(getString(R.string.gameBoard_doubleJeopardyTitle));
         }
         populateBoard();
     }
@@ -183,7 +182,7 @@ public class GameBoardActivity extends ActionBarActivity {
 
     private void doFinalJeopardy() {
         if (myScore <= 0) {
-            Toast.makeText(getApplicationContext(), "Your score is $0 or less, you will not play Final Jeopardy", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.gameBoard_toast_noFinalJeopardy), Toast.LENGTH_LONG).show();
             return;
         }
         Intent intent = new Intent(this, FinalJeopardyActivity.class);

@@ -25,6 +25,8 @@ public class DailyDoubleActivity extends ActionBarActivity {
 
     public static final String CLUE_BUNDLE_KEY = "rogden33.DailyDoubleActivity.clueKey";
 
+    private static final int NEGATIVE_SCORE_WAGER_TO = 1000;
+
     private String myUsername;
 
     private int myScore;
@@ -53,7 +55,7 @@ public class DailyDoubleActivity extends ActionBarActivity {
         TextView category = (TextView) findViewById(R.id.dailyDouble_TextView_categoryDisplay);
         category.setText(Html.fromHtml(myClue.getCategory()));
         if (myScore <= 0) {
-            Toast.makeText(getApplicationContext(), "You may wager up to $1000", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.dailyDouble_toast_negativeZeroScore) + NEGATIVE_SCORE_WAGER_TO, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -69,13 +71,13 @@ public class DailyDoubleActivity extends ActionBarActivity {
         EditText wagerEntry = (EditText) findViewById(R.id.dailyDouble_EditText_wagerEntry);
         Editable entry = wagerEntry.getText();
         if (entry == null || entry.toString().length() == 0) {
-            Toast.makeText(getApplicationContext(), "Enter a wager", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.dailyDouble_toast_noWagerEntered), Toast.LENGTH_SHORT).show();
             return;
         }
-        int maxWager = myScore <= 0 ? 1000 : myScore;
+        int maxWager = myScore <= 0 ? NEGATIVE_SCORE_WAGER_TO : myScore;
         int wager = Integer.parseInt(entry.toString());
         if (wager > maxWager) {
-            Toast.makeText(getApplicationContext(), "Wager cannot be greater than your score", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.dailyDouble_toast_highWagerEntered), Toast.LENGTH_SHORT).show();
             return;
         }
         Intent intent = new Intent(this, SingleClueActivity.class);

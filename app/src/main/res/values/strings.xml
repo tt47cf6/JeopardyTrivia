@@ -66,6 +66,25 @@
     <string name="dailyDouble_wagerPrompt">What is your wager?</string>
     <string name="dailyDouble_submitButtonLabel">Submit</string>
     <string name="dailyDouble_scoreLabel">Your Score</string>
+    <string name="confirmDelete_confirmationPrompt">Are you sure you want to delete this user?</string>
+    <string name="confirmDelete_positiveText">Yes</string>
+    <string name="confirmDelete_negativeText">Cancel</string>
+    <string name="dailyDouble_toast_noWagerEntered">Enter a wager</string>
+    <string name="dailyDouble_toast_highWagerEntered">Wager cannot be greater than your score</string>
+    <string name="dailyDouble_toast_negativeZeroScore">You may wager up to $</string>
+    <string name="finalJeopardy_toast_noWagerEntry">Enter a wager</string>
+    <string name="finalJeopardy_toast_highWagerEntry">Wager cannot be greater than your score</string>
+    <string name="finalJeopardy_toast_clueNotDownloaded">Clue is not ready yet</string>
+    <string name="gameBoard_toast_switchToLandscape">You are encouraged to switch to landscape orientation</string>
+    <string name="gameBoard_singleJeopardyTitle">Single Jeopardy!</string>
+    <string name="gameBoard_doubleJeopardyTitle">Double Jeopardy!</string>
+    <string name="gameBoard_toast_noFinalJeopardy">Your score is $0 or less, you will not play Final Jeopardy</string>
+    <string name="loginAttempt_toast_loginFailure">Could not authenticate</string>
+    <string name="loginAttempt_toast_noPin">Enter your pin</string>
+    <string name="register_toast_fillInAllFields">Please fill out all fields</string>
+    <string name="register_toast_usernameExists">This username already exists!</string>
+    <string name="register_toast_pinsDontMatch">Pins do not match!</string>
+    <string name="register_toast_userCreated">User created!</string>
 
 
 </resources>

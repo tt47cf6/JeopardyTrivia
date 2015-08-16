@@ -120,7 +120,9 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         // get username extra
         myUsername = getIntent().getStringExtra(USERNAME_EXTRA_KEY);
         // set content view based on current orientation
@@ -185,15 +187,6 @@ public class RandomQuestionsActivity extends ActionBarActivity {
                 }
             });
         }
-    }
-
-    /**
-     * {@inheritDoc
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_random_questions, menu);
-        return true;
     }
 
     /**

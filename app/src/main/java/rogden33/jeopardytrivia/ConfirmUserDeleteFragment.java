@@ -18,11 +18,11 @@ public class ConfirmUserDeleteFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Are you sure you want to delete this user?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.confirmDelete_confirmationPrompt))
+                .setPositiveButton(getString(R.string.confirmDelete_positiveText), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // delete user from SQLite
-                        String username = ((MainMenuActivity)getActivity()).getUsername();
+                        String username = ((MainMenuActivity) getActivity()).getUsername();
                         UsersDB db = new UsersDB(getActivity());
                         db.deleteUser(username);
                         db.closeDB();
@@ -41,7 +41,7 @@ public class ConfirmUserDeleteFragment extends DialogFragment {
                         getActivity().finish();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.confirmDelete_negativeText), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }
