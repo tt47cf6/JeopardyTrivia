@@ -28,19 +28,19 @@ public class GameBoard {
 
     private final int myNumberOfCategories;
 
-    private String[][] myClues;
+    private final String[][] myClues;
 
-    private String[][] myCorrectResponses;
+    private final String[][] myCorrectResponses;
 
-    private String[] myCategories;
+    private final String[] myCategories;
 
-    private Random myRandom;
+    private final Random myRandom;
 
-    private GameBoardActivity myActivity;
+    private final Displayable myActivity;
 
-    private GameBoard mySelf = this;
+    private final GameBoard mySelf = this;
 
-    public GameBoard(GameBoardActivity activity, int rows, int cats) {
+    public GameBoard(Displayable activity, int rows, int cats) {
         myNumberOfRows = rows;
         myNumberOfCategories = cats;
         myClues = new String[rows][cats];

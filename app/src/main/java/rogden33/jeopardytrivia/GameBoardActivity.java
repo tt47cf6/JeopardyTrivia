@@ -19,11 +19,12 @@ import java.util.Random;
 import java.util.Set;
 
 import rogden33.jeopardytrivia.model.Clue;
+import rogden33.jeopardytrivia.model.Displayable;
 import rogden33.jeopardytrivia.model.GameBoard;
 import rogden33.jeopardytrivia.model.GameBoardLocation;
 
 
-public class GameBoardActivity extends ActionBarActivity {
+public class GameBoardActivity extends ActionBarActivity implements Displayable {
 
     public static final int NUM_OF_CATEGORIES = 5;
 

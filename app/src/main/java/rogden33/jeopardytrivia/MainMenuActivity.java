@@ -1,24 +1,13 @@
 package rogden33.jeopardytrivia;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AlertDialog;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import rogden33.jeopardytrivia.database.UsersDB;
 
 /**
  * The Main Menu activity. Right now, this Activity only shows the current user and their current
@@ -120,8 +109,8 @@ public class MainMenuActivity extends ActionBarActivity {
     }
 
     public void viewScoreOnClick(View v) {
-        Intent intent = new Intent(this, ViewScores.class);
-        intent.putExtra(ViewScores.USERNAME_EXTRA_KEY, myUsername);
+        Intent intent = new Intent(this, ViewScoresActivity.class);
+        intent.putExtra(ViewScoresActivity.USERNAME_EXTRA_KEY, myUsername);
         startActivity(intent);
     }
 

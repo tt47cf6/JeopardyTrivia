@@ -21,7 +21,7 @@ import java.util.List;
 import rogden33.jeopardytrivia.database.UsersDB;
 
 
-public class ViewScores extends ActionBarActivity {
+public class ViewScoresActivity extends ActionBarActivity {
 
     public static final int NUMBER_OF_SCORES = 25;
     public static final String USERNAME_EXTRA_KEY = "rogden33.viewScores.usernameExtraKey";

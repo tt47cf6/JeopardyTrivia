@@ -27,7 +27,7 @@
             android:name=".RandomQuestionsActivity"
             android:label="@string/randomQuestions_activityTitle" />
         <activity
-            android:name=".ViewScores"
+            android:name=".ViewScoresActivity"
             android:label="@string/title_activity_view_scores" >
         </activity>
         <activity

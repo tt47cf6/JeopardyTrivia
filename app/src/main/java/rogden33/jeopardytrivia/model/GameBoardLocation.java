@@ -5,8 +5,8 @@ import android.util.Log;
 import java.io.Serializable;
 
 public class GameBoardLocation implements Serializable {
-    private int myX;
-    private int myY;
+    private final int myX;
+    private final int myY;
 
     public GameBoardLocation(int x, int y) {
         myX = x;

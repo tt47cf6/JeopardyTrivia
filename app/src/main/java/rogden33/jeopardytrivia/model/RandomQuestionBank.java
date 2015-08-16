@@ -150,7 +150,7 @@ public class RandomQuestionBank implements Serializable {
             new RandomQuestionGetter().execute("http://jservice.io/api/random?count=" + BATCH_SIZE);
         } else {
             // no connection
-            Toast.makeText(myActivity, "No network connection available.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(myActivity.getApplicationContext(), "No network connection available.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -297,7 +297,7 @@ public class RandomQuestionBank implements Serializable {
                 myActivity.display();
             } catch (JSONException e) {
                 // could not parse the JSON object string
-                Toast.makeText(myActivity, "Could not get more questions", Toast.LENGTH_SHORT).show();
+                Toast.makeText(myActivity.getApplicationContext(), "Could not get more questions", Toast.LENGTH_SHORT).show();
             }
         }
     }
