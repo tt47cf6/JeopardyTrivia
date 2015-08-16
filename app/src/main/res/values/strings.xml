@@ -85,6 +85,8 @@
     <string name="register_toast_usernameExists">This username already exists!</string>
     <string name="register_toast_pinsDontMatch">Pins do not match!</string>
     <string name="register_toast_userCreated">User created!</string>
+    <string name="gameBoard_toast_noConnection">No network connection available.</string>
+    <string name="randomQuestions_toast_noConnection">No network connection available</string>
 
 
 </resources>

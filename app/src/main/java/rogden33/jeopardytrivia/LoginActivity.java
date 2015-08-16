@@ -22,15 +22,18 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // hide that action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
         }
+        // set layout based on screen orientation
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_login);
         } else {
             setContentView(R.layout.activity_login_landscape);
         }
+        // start the fragment
         FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
         trans.add(R.id.login_frameLayout_fragmentContainer, new LoginUserListFragment());
         trans.commit();

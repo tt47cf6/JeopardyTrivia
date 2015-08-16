@@ -40,11 +40,13 @@ public class MainMenuActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // set the layout based on the orientation
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.activity_main_menu);
         } else {
             setContentView(R.layout.activity_main_menu_landscape);
         }
+        // hide the action bar
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -61,15 +63,22 @@ public class MainMenuActivity extends ActionBarActivity {
         TextView usernameDisplay = (TextView) findViewById(R.id.mainMenu_TextView_username);
         TextView highscoreDisplay = (TextView) findViewById(R.id.mainMenu_TextView_score);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            // use new lines since we have the room in portrait
             usernameDisplay.setText("USERNAME\n" + myUsername);
             highscoreDisplay.setText("SCORE\n$" + myScore);
         } else {
+            // probably not enough room, keep info on the same line
             usernameDisplay.setText("USERNAME: " + myUsername);
             highscoreDisplay.setText("SCORE: $" + myScore);
         }
 
     }
 
+    /**
+     * Returns the current user's username. Used by the delete DialogFragment.
+     *
+     * @return the player's username
+     */
     public String getUsername() {
         return myUsername;
     }
@@ -91,6 +100,12 @@ public class MainMenuActivity extends ActionBarActivity {
         showUser();
     }
 
+    /**
+     * The onClick listener for the delete user button. This button shows the confirmation dialog
+     * which does the rest of the work.
+     *
+     * @param v the current view
+     */
     public void deleteUser(View v) {
         ConfirmUserDeleteFragment dialog = new ConfirmUserDeleteFragment();
         dialog.show(getFragmentManager(), "confirmDelete" );
@@ -108,12 +123,22 @@ public class MainMenuActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    /**
+     * The onClick listener for the view score activity button.
+     *
+     * @param v the current view
+     */
     public void viewScoreOnClick(View v) {
         Intent intent = new Intent(this, ViewScoresActivity.class);
         intent.putExtra(ViewScoresActivity.USERNAME_EXTRA_KEY, myUsername);
         startActivity(intent);
     }
 
+    /**
+     * The onClick listener for the gameBoard play activity button.
+     *
+     * @param view the current view
+     */
     public void gameBoardOnClick(View view) {
         Intent intent = new Intent(this, GameBoardActivity.class);
         intent.putExtra(GameBoardActivity.USERNAME_EXTRA_KEY, myUsername);

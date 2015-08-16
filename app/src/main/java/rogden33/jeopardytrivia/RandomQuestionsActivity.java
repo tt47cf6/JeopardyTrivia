@@ -106,6 +106,10 @@ public class RandomQuestionsActivity extends ActionBarActivity {
      */
     private int myScore;
 
+    /**
+     * The current streak. This is set to zero when a clue is answered incorrectly, and incremented
+     * by one when a clue is answered correctly.
+     */
     private int myStreak;
 
     /**
@@ -289,6 +293,11 @@ public class RandomQuestionsActivity extends ActionBarActivity {
 
     }
 
+    /**
+     * The quit button onClick listener. Calls finish on the current activity.
+     *
+     * @param v the current view
+     */
     public void quit(View v) {
         finish();
     }

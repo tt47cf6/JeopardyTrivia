@@ -13,12 +13,21 @@ import android.widget.Button;
 
 import rogden33.jeopardytrivia.database.UsersDB;
 
+/**
+ * A confirmation-type Dialog Fragment for checking if the user actually intends to delete the
+ * current user. If so, the user is removed from the database and SharedPref, if not, nothing
+ * happens.
+ */
 public class ConfirmUserDeleteFragment extends DialogFragment {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(getString(R.string.confirmDelete_confirmationPrompt))
+                // yes, delete user
                 .setPositiveButton(getString(R.string.confirmDelete_positiveText), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // delete user from SQLite
@@ -41,15 +50,20 @@ public class ConfirmUserDeleteFragment extends DialogFragment {
                         getActivity().finish();
                     }
                 })
+                // no, do not delete user
                 .setNegativeButton(getString(R.string.confirmDelete_negativeText), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        // do nothing
                     }
                 });
         return builder.create();
 
     }
 
+    /**
+     * {@inheritDoc}
+     * Sets the color of the buttons.
+     */
     @Override
     public void onStart() {
         super.onStart();

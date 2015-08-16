@@ -7,7 +7,7 @@ import java.io.Serializable;
  * other random answers selected from the RandomQuestionBank. This is used for multiple choice selection
  * when that is chosen in an Activity or Fragment.
  */
-public class Clue implements Serializable, Comparable<Clue> {
+public class Clue implements Serializable {
 
     /**
      * The clue.
@@ -130,10 +130,6 @@ public class Clue implements Serializable, Comparable<Clue> {
      */
     public int getCorrectResponseIndex() {
         return myCorrectResponseIndex;
-    }
-
-    public int compareTo(Clue other) {
-        return other.myDifficulty - myDifficulty;
     }
 
 }

@@ -27,6 +27,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import rogden33.jeopardytrivia.R;
 import rogden33.jeopardytrivia.RandomQuestionsActivity;
 
 /**
@@ -150,7 +151,7 @@ public class RandomQuestionBank implements Serializable {
             new RandomQuestionGetter().execute("http://jservice.io/api/random?count=" + BATCH_SIZE);
         } else {
             // no connection
-            Toast.makeText(myActivity.getApplicationContext(), "No network connection available.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(myActivity.getApplicationContext(), myActivity.getString(R.string.randomQuestions_toast_noConnection), Toast.LENGTH_SHORT).show();
         }
     }
 
