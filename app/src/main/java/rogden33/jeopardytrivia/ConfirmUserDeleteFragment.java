@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.widget.Button;
 
 import rogden33.jeopardytrivia.database.UsersDB;
 
@@ -46,5 +48,14 @@ public class ConfirmUserDeleteFragment extends DialogFragment {
                 });
         return builder.create();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Button positive = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE);
+        Button negative = ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE);
+        positive.setTextColor(Color.BLACK);
+        negative.setTextColor(Color.BLACK);
     }
 }

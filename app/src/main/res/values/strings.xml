@@ -60,6 +60,12 @@
     <string name="finalJeopardy__scoreLabel">Your Score: </string>
     <string name="finalJeopardy_submitButtonLabel">Submit</string>
     <string name="finalJeopardy_title">Final Jeopardy!</string>
+    <string name="title_activity_daily_double">DailyDoubleActivity</string>
+    <string name="dailyDouble_title">Daily Double!</string>
+    <string name="dailyDouble_categoryLabel">CATEGORY</string>
+    <string name="dailyDouble_wagerPrompt">What is your wager?</string>
+    <string name="dailyDouble_submitButtonLabel">Submit</string>
+    <string name="dailyDouble_scoreLabel">Your Score</string>
 
 
 </resources>

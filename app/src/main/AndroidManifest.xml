@@ -42,6 +42,10 @@
             android:name=".FinalJeopardyActivity"
             android:label="@string/title_activity_final_jeopardy" >
         </activity>
+        <activity
+            android:name=".DailyDoubleActivity"
+            android:label="@string/title_activity_daily_double" >
+        </activity>
     </application>
 
 </manifest>
