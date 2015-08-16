@@ -86,11 +86,7 @@ public class GameBoardActivity extends ActionBarActivity {
             while (doubles.size() < NUM_DAILY_DOUBLES) {
                 int x = rand.nextInt(PRIZES.length);
                 int y = rand.nextInt(NUM_OF_CATEGORIES);
-                Log.i("DEBUG", doubles.toString());
                 doubles.add(new GameBoardLocation(x, y));
-                Log.i("DEBUG", doubles.toString());
-                doubles.add(new GameBoardLocation(x, y));
-                Log.i("DEBUG", doubles.toString());
             }
             int i = 0;
             for (GameBoardLocation p : doubles) {
@@ -169,6 +165,18 @@ public class GameBoardActivity extends ActionBarActivity {
             int catID = getResources().getIdentifier("gameBoard_TextView_category" + cat, "id", getPackageName());
             TextView categoryDisplay = (TextView) findViewById(catID);
             categoryDisplay.setText("");
+        }
+        Random rand = new Random();
+        Set<GameBoardLocation> doubles = new HashSet<GameBoardLocation>();
+        while (doubles.size() < NUM_DAILY_DOUBLES) {
+            int x = rand.nextInt(PRIZES.length);
+            int y = rand.nextInt(NUM_OF_CATEGORIES);
+            doubles.add(new GameBoardLocation(x, y));
+        }
+        int i = 0;
+        for (GameBoardLocation p : doubles) {
+            myDailyDoubles[i] = p;
+            i++;
         }
         new GameBoard(this, PRIZES.length, NUM_OF_CATEGORIES).requestBoard();
     }
