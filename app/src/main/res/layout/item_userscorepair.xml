@@ -4,16 +4,19 @@
     android:layout_height="match_parent"
     android:padding="15dp">
 
+    <!-- Username display -->
     <TextView
         android:id="@+id/viewScore_TextView_itemLayout_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <!-- Middle empty space between username and score -->
     <View
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
+    <!-- Score display -->
     <TextView
         android:id="@+id/viewScore_TextView_itemLayout_score"
         android:layout_width="wrap_content"

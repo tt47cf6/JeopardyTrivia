@@ -9,6 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="rogden33.jeopardytrivia.FinalJeopardyActivity">
 
+    <!-- Static final jeopardy title label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,12 +18,14 @@
         android:textSize="30sp"
         android:text="@string/finalJeopardy_title"/>
 
+    <!-- Static staegory label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/finalJeopardy_categoryLabel" />
 
+    <!-- Category display. Initialized with loading text -->
     <TextView
         android:id="@+id/finalJeopardy_TextView_categoryDisplay"
         android:layout_width="wrap_content"
@@ -32,12 +35,14 @@
         android:gravity="center"
         android:paddingBottom="20dp"/>
 
+    <!-- Static score label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/finalJeopardy__scoreLabel" />
 
+    <!-- Score display -->
     <TextView
         android:id="@+id/finalJeopardy_TextView_scoreDisplay"
         android:layout_width="wrap_content"
@@ -45,6 +50,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"/>
 
+    <!-- Static wager prompt -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,6 +58,7 @@
         android:gravity="center"
         android:text="@string/finalJeopardy_wagerPrompt" />
 
+    <!-- Wager entry -->
     <EditText
         android:id="@+id/finalJeopardy_EditText_wagerEntry"
         android:layout_width="match_parent"
@@ -61,11 +68,13 @@
         android:textColor="#ffdac863"
         android:textColorHint="#ffdac863"/>
 
+    <!-- Resizable view to keep the submit button at the bottom -->
     <View
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- Submit button -->
     <Button
         android:id="@+id/finalJeopardy_Button_submitButton"
         android:layout_width="wrap_content"

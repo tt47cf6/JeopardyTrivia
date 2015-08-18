@@ -9,6 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="rogden33.jeopardytrivia.GameBoardActivity">
 
+    <!-- Title display. Initialized with the Loading text and replaced with
+        Single and Double Jeopardy titles through game play -->
     <TextView
         android:id="@+id/gameBoard_TextView_titleDisplay"
         android:layout_width="wrap_content"
@@ -18,6 +20,7 @@
         android:textSize="30sp"
         android:text="@string/gameBoard_title_loadingText"/>
 
+    <!-- Category displays -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,15 +68,19 @@
 
     </LinearLayout>
 
+    <!-- Scroll as needed -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- The GridView was not able to keep everything sized nicely, so I used a
+                static nested LinearLayout design instead. -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Row 0 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,6 +128,7 @@
 
             </LinearLayout>
 
+            <!-- Row 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,6 +176,7 @@
 
             </LinearLayout>
 
+            <!-- Row 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,6 +224,7 @@
 
             </LinearLayout>
 
+            <!-- Row 3 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -262,6 +272,7 @@
 
             </LinearLayout>
 
+            <!-- Row 4 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -309,6 +320,7 @@
 
             </LinearLayout>
 
+            <!-- Row 5 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -356,39 +368,42 @@
 
             </LinearLayout>
 
+            <!-- Display the current user's score on one line -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!-- Center the display -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
+                <!-- Static score label -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="@string/singleClue_scoreLabel"/>
 
+                <!-- Score display -->
                 <TextView
                     android:id="@+id/gameBoard_TextView_scoreDisplay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp" />
 
+                <!-- Center the display -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
             </LinearLayout>
+
         </LinearLayout>
 
-
-
     </ScrollView>
-
 
 </LinearLayout>

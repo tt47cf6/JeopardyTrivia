@@ -7,23 +7,27 @@
     android:orientation="vertical"
     tools:context="rogden33.jeopardytrivia.ViewScoresActivity">
 
+    <!-- Top image display -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/viewscores_topscores_image"
         android:adjustViewBounds="true"/>
 
+    <!-- Score list view -->
     <ListView
         android:id="@+id/viewScores_ListView_scoreListDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
 
+    <!-- Keep share button at the bottom -->
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- Share button -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- My default button theme -->
+
     <item>
         <shape>
+            <!-- Fill color -->
             <solid
-                android:color="#ff838185" />
+                android:color="#ff686466" />
+            <!-- Boarder color -->
             <stroke
                 android:width="1dp"
-                android:color="#ff636062" />
+                android:color="#ff3b3b3b" />
+            <!-- Corner rounding -->
             <corners
                 android:radius="6dp" />
+            <!-- Padding between text and button edge, effects the button size -->
             <padding
                 android:left="10dp"
                 android:top="10dp"

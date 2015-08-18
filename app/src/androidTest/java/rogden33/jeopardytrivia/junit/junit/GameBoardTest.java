@@ -55,7 +55,9 @@ public class GameBoardTest extends TestCase implements Displayable {
      */
     public void testCategories() {
         for (String cat : myBoard.getCategories()) {
+            // check null
             assertNotNull("Category should not be null", cat);
+            // check length
             assertTrue("Category should not be an empty string", cat.length() > 0);
         }
     }
@@ -67,9 +69,11 @@ public class GameBoardTest extends TestCase implements Displayable {
         for (int cat = 0; cat < NUM_OF_CATEGORIES; cat++) {
             for (int row = 0; row < NUM_OF_ROWS; row++) {
                 Clue clue = myBoard.getClue(row, cat);
+                // check escapes in the fields
                 assertFalse("An escaped character was found in the category", clue.getCategory().contains("\\"));
                 assertFalse("An escaped character was found in the clue", clue.getClue().contains("\\"));
                 assertFalse("An escaped character was found in the response", clue.getResponse().contains("\\"));
+                // check escapes in the selectable responses
                 for (String resp : clue.getSelectableAnswers()) {
                     assertFalse("An escaped character was found in a selectable response", resp.contains("\\"));
                 }
@@ -97,14 +101,18 @@ public class GameBoardTest extends TestCase implements Displayable {
         for (int cat = 0; cat < NUM_OF_CATEGORIES; cat++) {
             for (int row = 0; row < NUM_OF_ROWS; row++) {
                 Clue clue = myBoard.getClue(row, cat);
+                // check for nulls
                 assertNotNull("Clue is null", clue);
                 assertNotNull("Category is null", clue.getCategory());
                 assertNotNull("Clue's clue is null", clue.getClue());
                 assertNotNull("Response is null", clue.getResponse());
+                // check correct index
                 assertTrue("Correct index is invalid", clue.getCorrectResponseIndex() >= 0);
+                // check lengths
                 assertTrue("Category is an empty string", clue.getCategory().length() > 0);
                 assertTrue("Response is an empty string", clue.getResponse().length() > 0);
                 assertTrue("Clue's clue is an empty string", clue.getClue().length() > 0);
+                // check selectable responses
                 for (String resp : clue.getSelectableAnswers()) {
                     assertNotNull("Selectable response is null", resp);
                     assertTrue("Selectable response is an empty string", resp.length() > 0);

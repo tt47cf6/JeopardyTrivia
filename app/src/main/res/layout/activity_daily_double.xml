@@ -7,6 +7,8 @@
     tools:context="rogden33.jeopardytrivia.DailyDoubleActivity"
     android:orientation="vertical">
 
+    <!-- Static daily double title label -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,12 +17,14 @@
         android:textSize="30sp"
         android:text="@string/dailyDouble_title"/>
 
+    <!-- Static category label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/dailyDouble_categoryLabel" />
 
+    <!-- Category display -->
     <TextView
         android:id="@+id/dailyDouble_TextView_categoryDisplay"
         android:layout_width="wrap_content"
@@ -29,12 +33,14 @@
         android:gravity="center"
         android:paddingBottom="20dp"/>
 
+    <!-- Static score label -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/dailyDouble_scoreLabel" />
 
+    <!-- Score display -->
     <TextView
         android:id="@+id/dailyDouble_TextView_scoreDisplay"
         android:layout_width="wrap_content"
@@ -42,6 +48,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"/>
 
+    <!-- Static wager prompt -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +56,7 @@
         android:gravity="center"
         android:text="@string/dailyDouble_wagerPrompt" />
 
+    <!-- Wager entry -->
     <EditText
         android:id="@+id/dailyDouble_EditText_wagerEntry"
         android:layout_width="match_parent"
@@ -58,11 +66,13 @@
         android:textColor="#ffdac863"
         android:textColorHint="#ffdac863"/>
 
+    <!-- Variable sized empty space to keep the button at the bottom -->
     <View
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- Submit button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

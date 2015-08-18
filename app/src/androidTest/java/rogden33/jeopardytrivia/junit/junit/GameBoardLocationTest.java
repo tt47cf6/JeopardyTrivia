@@ -16,6 +16,7 @@ public class GameBoardLocationTest extends TestCase {
     public void testEquals() {
         GameBoardLocation loc1 = new GameBoardLocation(1, 2);
         GameBoardLocation loc2 = new GameBoardLocation(1, 2);
+        // check both directions of equality
         assertTrue("Objects should have been equal to each other", loc1.equals(loc2));
         assertTrue("Objects should have been equal to each other", loc2.equals(loc1));
     }
@@ -26,6 +27,7 @@ public class GameBoardLocationTest extends TestCase {
     public void testNotEquals() {
         GameBoardLocation loc1 = new GameBoardLocation(2, 2);
         GameBoardLocation loc2 = new GameBoardLocation(1, 2);
+        // check both directions of equality
         assertFalse("Objects should not have been equal to each other", loc1.equals(loc2));
         assertFalse("Objects should not have been equal to each other", loc2.equals(loc1));
     }
@@ -36,6 +38,7 @@ public class GameBoardLocationTest extends TestCase {
     public void testEqualsEdge() {
         GameBoardLocation loc1 = new GameBoardLocation(0, -1);
         GameBoardLocation loc2 = new GameBoardLocation(0, -1);
+        // check both directions of equality
         assertTrue("Objects should have been equal to each other", loc1.equals(loc2));
         assertTrue("Objects should have been equal to each other", loc2.equals(loc1));
     }
@@ -46,6 +49,7 @@ public class GameBoardLocationTest extends TestCase {
     public void testNotEqualsEdge() {
         GameBoardLocation loc1 = new GameBoardLocation(0, 0);
         GameBoardLocation loc2 = new GameBoardLocation(-1, -1);
+        // check both directions of equality
         assertFalse("Objects should not have been equal to each other", loc1.equals(loc2));
         assertFalse("Objects should not have been equal to each other", loc2.equals(loc1));
     }
@@ -56,7 +60,9 @@ public class GameBoardLocationTest extends TestCase {
     public void testHashCodeAndEquals() {
         GameBoardLocation loc1 = new GameBoardLocation(1, 2);
         GameBoardLocation loc2 = new GameBoardLocation(1, 2);
+        // check hash code
         assertTrue("Hashcodes did not match and should have", loc1.hashCode() == loc2.hashCode());
+        // check both directions of equality
         assertTrue("Objects should have been equal to each other", loc1.equals(loc2));
         assertTrue("Objects should have been equal to each other", loc2.equals(loc1));
     }

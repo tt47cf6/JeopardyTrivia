@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- Static streak label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- Static score label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- Streak display -->
             <TextView
                 android:id="@+id/randomQuestions_TextView_streakDisplay"
                 android:layout_width="wrap_content"
@@ -89,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- Score display -->
             <TextView
                 android:id="@+id/randomQuestions_TextView_scoreDisplay"
                 android:layout_width="wrap_content"
@@ -179,6 +183,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Quit button -->
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -197,8 +202,7 @@
             android:onClick="nextClue"
             android:text="@string/randomQuestions_nextButtonText"
             android:background="@drawable/default_button_theme"
-            android:layout_margin="5dp"
-            />
+            android:layout_margin="5dp" />
 
     </LinearLayout>
 

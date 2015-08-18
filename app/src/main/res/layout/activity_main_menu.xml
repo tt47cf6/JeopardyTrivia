@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context="rogden33.jeopardytrivia.MainMenuActivity">
 
+    <!-- Static Main Menu title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
         android:paddingBottom="30dp"
         android:paddingTop="30dp"/>
 
+    <!-- View top scores button -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +37,7 @@
         android:paddingBottom="30dp"
         android:paddingTop="30dp"/>
 
+    <!-- GameBoardActivity button -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,11 +66,13 @@
         android:gravity="center"
         android:paddingTop="10dp"/>
 
+    <!-- Keep the delete user button at the bottom -->
     <View
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <!-- Delete user button -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
