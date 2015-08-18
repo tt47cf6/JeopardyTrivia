@@ -3,4 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="rogden33.jeopardytrivia.FinalJeopardyActivity">
 
+    <!-- No menu items here. -->
+
 </menu>

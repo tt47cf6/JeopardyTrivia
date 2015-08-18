@@ -5,6 +5,17 @@
     <string name="action_settings">Settings</string>
     <string name="SHARED_PREFS">rogden33.jeopardyTrivia.sharedPreferences</string>
 
+    <!-- ACTIVITY TITLES -->
+    <string name="title_activity_daily_double">DailyDoubleActivity</string>
+    <string name="title_activity_game_board">GameBoardActivity</string>
+    <string name="title_activity_single_clue">SingleClueActivity</string>
+    <string name="title_activity_final_jeopardy">FinalJeopardyActivity</string>
+    <string name="mainMenu_activityTitle">Main Menu</string>
+    <string name="randomQuestions_activityTitle">RandomQuestions</string>
+    <string name="dailyDouble_title">Daily Double!</string>
+    <string name="finalJeopardy_title">Final Jeopardy!</string>
+    <string name="title_activity_view_scores">ViewScores</string>
+
     <!-- LOGIN ACTIVITY TEXT ITEMS-->
     <string name="login_welcome_text">Let\'s Play Jeopardy Trivia!</string>
     <string name="login_login_prompt">Already registered? Login below:</string>
@@ -20,73 +31,72 @@
     <string name="login_register_pinLabel">Pin:</string>
     <string name="login_register_pinAgainLabel">Pin Again:</string>
     <string name="login_register_submitButtonText">Submit</string>
+    <string name="login_register_toast_fillInAllFields">Please fill out all fields</string>
+    <string name="login_register_toast_usernameExists">This username already exists!</string>
+    <string name="login_register_toast_pinsDontMatch">Pins do not match!</string>
+    <string name="login_register_toast_userCreated">User created!</string>
+    <string name="login_loginAttempt_toast_loginFailure">Could not authenticate</string>
+    <string name="login_loginAttempt_toast_noPin">Enter your pin</string>
+
+    <!-- DELETE USER CONFIRMATION ITEMS -->
+    <string name="confirmDelete_confirmationPrompt">Are you sure you want to delete this user?</string>
+    <string name="confirmDelete_positiveText">Yes</string>
+    <string name="confirmDelete_negativeText">Cancel</string>
 
     <!-- MAIN MENU ACTIVITY ITEMS -->
-    <string name="mainMenu_activityTitle">Main Menu</string>
     <string name="MainMenu_SharedPref_Score_Prefix">rogden33.jeopardyTrivia.sharedPreferences.mainMenu.highScore.user=</string>
     <string name="mainMenu_ButtonText_toRandomQuestions">Random Questions</string>
     <string name="mainMenu_menuItem_deleteUserText">Delete User</string>
+    <string name="mainMenu_ButtonText_toViewScores">View Top Scores</string>
+    <string name="mainMenu_ButtonText_toGameBoard">Play with Jeopardy Board</string>
 
     <!-- RANDOM QUESTION ACTIVITY ITEMS -->
-    <string name="randomQuestions_activityTitle">RandomQuestions</string>
     <string name="randomQuestions_categoryLabel">CATEGORY</string>
     <string name="randomQuestions_clueLabel">CLUE</string>
     <string name="randomQuestions_nextButtonText">Next</string>
     <string name="randomQuestions_scoreLabel">Score</string>
     <string name="randomQuestions_streakLabel">Streak</string>
     <string name="randomQuestions_quitButtonText">Quit</string>
-    <string name="title_activity_view_scores">ViewScores</string>
+    <string name="randomQuestions_toast_noConnection">No network connection available</string>
 
+    <!-- VIEW SCORE ACTIVITY ITEMS -->
     <string name="viewScores_topLabel">Top 25 Users By Score</string>
     <string name="viewScore_shareButton">Share</string>
-    <string name="mainMenu_ButtonText_toViewScores">View Top Scores</string>
     <string name="viewScores_shareWith">Share with</string>
     <string name="viewScore_staticShareText">Check out my score in Jeopardy Trivia!: </string>
     <string name="viewScore_staticHighScoreShareText">Check out my top score in Jeopardy Trivia!: </string>
-    <string name="title_activity_game_board">GameBoardActivity</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="mainMenu_ButtonText_toGameBoard">Play with Jeopardy Board</string>
-    <string name="title_activity_single_clue">SingleClueActivity</string>
+    <!-- GAME BOARD ACTIVITY ITEMS -->
+    <string name="gameBoard_title_loadingText">Loading</string>
+    <string name="gameBoard_toast_switchToLandscape">You are encouraged to switch to landscape orientation</string>
+    <string name="gameBoard_singleJeopardyTitle">Single Jeopardy!</string>
+    <string name="gameBoard_doubleJeopardyTitle">Double Jeopardy!</string>
+    <string name="gameBoard_toast_noFinalJeopardy">Your score is $0 or less, you will not play Final Jeopardy</string>
+    <string name="gameBoard_toast_noConnection">No network connection available.</string>
+
+    <!-- DAILY DOUBLE ACTIVITY ITEMS -->
+    <string name="dailyDouble_categoryLabel">CATEGORY</string>
+    <string name="dailyDouble_wagerPrompt">What is your wager?</string>
+    <string name="dailyDouble_submitButtonLabel">Submit</string>
+    <string name="dailyDouble_scoreLabel">Your Score</string>
+    <string name="dailyDouble_toast_noWagerEntered">Enter a wager</string>
+    <string name="dailyDouble_toast_highWagerEntered">Wager cannot be greater than your score</string>
+    <string name="dailyDouble_toast_negativeZeroScore">You may wager up to $</string>
+
+    <!-- SINGLE CLUE ACTIVITY ITEMS -->
     <string name="singleClue_categoryLabel">CATEGORY</string>
     <string name="singleClue_clueLabel">CLUE</string>
     <string name="singleClue_scoreLabel">Your Score: </string>
     <string name="singleClue_prizeLabel">Clue Value: </string>
-    <string name="gameBoard_title_loadingText">Loading</string>
-    <string name="title_activity_final_jeopardy">FinalJeopardyActivity</string>
+
+    <!-- FINAL JEOPARDY ITEMS -->
     <string name="finalJeopardy_categoryLabel">CATEGORY</string>
     <string name="finalJeopardy_wagerPrompt">What is your wager?</string>
     <string name="finalJeopardy_wagerHint">Wager from $0 up to your total</string>
     <string name="finalJeopardy__scoreLabel">Your Score: </string>
     <string name="finalJeopardy_submitButtonLabel">Submit</string>
-    <string name="finalJeopardy_title">Final Jeopardy!</string>
-    <string name="title_activity_daily_double">DailyDoubleActivity</string>
-    <string name="dailyDouble_title">Daily Double!</string>
-    <string name="dailyDouble_categoryLabel">CATEGORY</string>
-    <string name="dailyDouble_wagerPrompt">What is your wager?</string>
-    <string name="dailyDouble_submitButtonLabel">Submit</string>
-    <string name="dailyDouble_scoreLabel">Your Score</string>
-    <string name="confirmDelete_confirmationPrompt">Are you sure you want to delete this user?</string>
-    <string name="confirmDelete_positiveText">Yes</string>
-    <string name="confirmDelete_negativeText">Cancel</string>
-    <string name="dailyDouble_toast_noWagerEntered">Enter a wager</string>
-    <string name="dailyDouble_toast_highWagerEntered">Wager cannot be greater than your score</string>
-    <string name="dailyDouble_toast_negativeZeroScore">You may wager up to $</string>
     <string name="finalJeopardy_toast_noWagerEntry">Enter a wager</string>
     <string name="finalJeopardy_toast_highWagerEntry">Wager cannot be greater than your score</string>
     <string name="finalJeopardy_toast_clueNotDownloaded">Clue is not ready yet</string>
-    <string name="gameBoard_toast_switchToLandscape">You are encouraged to switch to landscape orientation</string>
-    <string name="gameBoard_singleJeopardyTitle">Single Jeopardy!</string>
-    <string name="gameBoard_doubleJeopardyTitle">Double Jeopardy!</string>
-    <string name="gameBoard_toast_noFinalJeopardy">Your score is $0 or less, you will not play Final Jeopardy</string>
-    <string name="loginAttempt_toast_loginFailure">Could not authenticate</string>
-    <string name="loginAttempt_toast_noPin">Enter your pin</string>
-    <string name="register_toast_fillInAllFields">Please fill out all fields</string>
-    <string name="register_toast_usernameExists">This username already exists!</string>
-    <string name="register_toast_pinsDontMatch">Pins do not match!</string>
-    <string name="register_toast_userCreated">User created!</string>
-    <string name="gameBoard_toast_noConnection">No network connection available.</string>
-    <string name="randomQuestions_toast_noConnection">No network connection available</string>
-
 
 </resources>

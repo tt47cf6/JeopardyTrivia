@@ -1,4 +1,6 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     tools:context="rogden33.jeopardytrivia.ViewScoresActivity">
 
+    <!-- No menu items here. -->
+
 </menu>
