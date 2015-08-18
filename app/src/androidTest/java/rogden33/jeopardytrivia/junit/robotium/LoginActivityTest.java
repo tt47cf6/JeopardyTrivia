@@ -36,11 +36,10 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     }
 
     /**
-     * Close all opened activities.
+     * Finish all opened activities.
      */
     @Override
     public void tearDown() throws Exception {
-        //finishOpenedActivities() will finish all the activities that have been opened during the test execution.
         solo.finishOpenedActivities();
     }
 
@@ -71,7 +70,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     }
 
     /**
-     * Test that when registering a new user, that if the enetered pins do not match, the fragment
+     * Test that when registering a new user, that if the entered pins do not match, the fragment
      * does not return to the user list fragment because of a successful login. This is checked
      * by looking for the text "Submit" which only appears if the displayed fragment is still the
      * register new user fragment.
@@ -222,5 +221,4 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
             }
         }
     }
-
 }

@@ -2,12 +2,11 @@ package rogden33.jeopardytrivia;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -219,7 +218,7 @@ public class FinalJeopardyActivity extends ActionBarActivity {
             br.close();
             JSONObject object = new JSONObject(builder.toString());
             JSONArray cluesArray = (object).getJSONArray("clues");
-            String categroyTitle = object.getString("title");
+            String categoryTitle = object.getString("title");
             if (cluesArray.length() < 4) {
                 return index;
             }
@@ -235,7 +234,7 @@ public class FinalJeopardyActivity extends ActionBarActivity {
                         return index;
                     }
                     if (i == 0) {
-                        myCategory = categroyTitle.toUpperCase();
+                        myCategory = categoryTitle.toUpperCase();
                         myStringClue = clue;
                         myStringResponse = response;
                     } else if (i - 1 < myWrongResponses.length) {

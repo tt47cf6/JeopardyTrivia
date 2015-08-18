@@ -1,7 +1,5 @@
 package rogden33.jeopardytrivia.model;
 
-import android.util.Log;
-
 import java.io.Serializable;
 
 /**

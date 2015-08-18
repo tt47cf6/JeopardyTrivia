@@ -32,11 +32,6 @@ public class UsersDB {
     public static final String DB_NAME = "Users.db";
 
     /**
-     * A reference to the SQLite helper class.
-     */
-    private UserInfoDBHelper myDBHelper;
-
-    /**
      * A reference to the opened SQLite DB object.
      */
     private SQLiteDatabase mySQLDB;
@@ -47,10 +42,9 @@ public class UsersDB {
      * @param context the context of the Activity or Fragment using this DB
      */
     public UsersDB(Context context) {
-        myDBHelper = new UserInfoDBHelper(
+        UserInfoDBHelper helper = new UserInfoDBHelper(
                 context, DB_NAME, null, DB_VERSION);
-        mySQLDB =
-                myDBHelper.getWritableDatabase();
+        mySQLDB = helper.getWritableDatabase();
     }
 
     /**

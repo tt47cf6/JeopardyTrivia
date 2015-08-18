@@ -104,7 +104,7 @@ public class GameBoard {
      * @throws IllegalArgumentException if the indices are out of bounds
      */
     public Clue getClue(int row, int cat) throws IllegalArgumentException {
-        // check if ither index is out of bounds
+        // check if either index is out of bounds
         if (row >= myNumberOfRows || cat >= myNumberOfCategories) {
             throw new IllegalArgumentException("Index out of bounds!");
         }
@@ -115,7 +115,7 @@ public class GameBoard {
         // get the selectable responses and shuffle them
         List<String> responses = getPossibleAnswers(row, cat);
         Collections.shuffle(responses);
-        // put responses in an array and find the correct reponse
+        // put responses in an array and find the correct response
         String[] possible = new String[SELECTABLE_RESPONSES];
         int correctIndex = -1;
         for (int i = 0; i < SELECTABLE_RESPONSES; i++) {

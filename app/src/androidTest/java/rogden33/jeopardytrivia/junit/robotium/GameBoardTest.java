@@ -1,12 +1,10 @@
 package rogden33.jeopardytrivia.junit.robotium;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
 
 import com.robotium.solo.Solo;
 
 import rogden33.jeopardytrivia.LoginActivity;
-import rogden33.jeopardytrivia.RandomQuestionsActivity;
 
 /**
  * This Robotium test case tests all the behavior of the GameBoardActivity. To test all the

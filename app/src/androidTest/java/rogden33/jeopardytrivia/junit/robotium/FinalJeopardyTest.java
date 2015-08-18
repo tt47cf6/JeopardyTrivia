@@ -5,7 +5,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import com.robotium.solo.Solo;
 
 import rogden33.jeopardytrivia.FinalJeopardyActivity;
-import rogden33.jeopardytrivia.LoginActivity;
 
 /**
  * This Robotium test case checks that the Final Jeopardy activity is working as it should.

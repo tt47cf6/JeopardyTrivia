@@ -1,13 +1,11 @@
 package rogden33.jeopardytrivia.junit.robotium;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.robotium.solo.Solo;
 
-import rogden33.jeopardytrivia.MainMenuActivity;
 import rogden33.jeopardytrivia.RandomQuestionsActivity;
 
 /**

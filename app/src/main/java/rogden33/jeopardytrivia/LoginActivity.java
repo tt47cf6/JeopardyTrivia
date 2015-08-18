@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
 
 /**
  * This is the starting Activity where a user logs in. All of th functionality of this class is

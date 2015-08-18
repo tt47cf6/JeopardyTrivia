@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -70,9 +69,24 @@ public class RandomQuestionsActivity extends ActionBarActivity {
      */
     public static final String BUTTOND_BUNDLE_KEY = "rogden33.RandomQuestions.buttonD";
 
+    /**
+     * The key for the currnet streak in the saved instance state bundle
+     */
     public static final String STREAK_BUNDLE_KEY = "rogden33.RandomQuestions.streak";
+
+    /**
+     * The number of points to award on a correct response.
+     */
     public static final int CORRECT_POINTS = 200;
+
+    /**
+     * The number of points to dock on an incorrect response.
+     */
     public static final int INCORRECT_POINTS = 150;
+
+    /**
+     * When a question is answered incorrectly, reset the streak to this.
+     */
     public static final int STREAK_RESET = 0;
 
     /**
@@ -86,7 +100,7 @@ public class RandomQuestionsActivity extends ActionBarActivity {
     private Button[] myAnswerButtons;
 
     /**
-     * True while the loading text is to be dispalyed. Set to false once the first batch is loaded
+     * True while the loading text is to be displayed. Set to false once the first batch is loaded
      * in the RandomQuestionBank.
      */
     private boolean myFirstDisplayFlag = true;

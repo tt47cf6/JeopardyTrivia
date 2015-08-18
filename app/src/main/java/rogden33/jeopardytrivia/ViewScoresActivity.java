@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -28,7 +27,7 @@ import rogden33.jeopardytrivia.database.UsersDB;
 public class ViewScoresActivity extends ActionBarActivity {
 
     /**
-     * The top most number of users to dispaly in the lsit.
+     * The top most number of users to display in the list.
      */
     public static final int NUMBER_OF_SCORES = 25;
 
@@ -147,7 +146,7 @@ public class ViewScoresActivity extends ActionBarActivity {
         private final int myScore;
 
         /**
-         * Constructor that initalizes the fields with the passed values.
+         * Constructor that initializes the fields with the passed values.
          *
          * @param user the username
          * @param score the score

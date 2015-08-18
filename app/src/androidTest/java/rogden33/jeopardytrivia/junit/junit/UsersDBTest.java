@@ -2,8 +2,6 @@ package rogden33.jeopardytrivia.junit.junit;
 
 import android.test.AndroidTestCase;
 
-import junit.framework.TestCase;
-
 import rogden33.jeopardytrivia.database.UsersDB;
 
 /**
@@ -43,7 +41,7 @@ public class UsersDBTest extends AndroidTestCase {
 
     /**
      * Attempt to login with a new user account. If the user is valid, the username will be
-     * returned, otherwise null will be returned. First, make surethe returned username is not null,
+     * returned, otherwise null will be returned. First, make sure the returned username is not null,
      * and then that it matches the username.
      */
     public void testLogin() {
